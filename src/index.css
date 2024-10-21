@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* scrollbar  */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Tracker , wo line jis per scrollbar  move kr rha hy */
+::-webkit-scrollbar-track {
+  background: #cecece;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #065f3a;
+  border-radius: 15px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #074900;
+}
+/* ------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+@media (min-width: 640px) {
+  .active {
+    /* color: rgb(17, 24, 39); */
+    border-top: 4px solid black;
+  }
+}
+
+@media (max-width: 640px) {
+  .active { 
+    font-weight: bold;
+    /* border-top: 4px solid black; */
+  }
+}
+
+section div a.active {
+  border: none;
+  font-weight: bold;
+}

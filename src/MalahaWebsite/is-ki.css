@@ -1,0 +1,21 @@
+ul li :hover {
+  /* color: gold; */
+  font-weight: 700;
+}
+.header {
+  position: sticky;
+  width: -webkit-fill-available;
+  top: 0;
+}
+.icon:hover {
+  cursor: pointer;
+  /* background-color: grey; */
+  color: silver;
+}
+.mainColor {
+  background: linear-gradient(to right, #15803d, #20b858, #15803d);
+  color: white;
+}
+.us{
+  background-color: aquamarine;
+}
