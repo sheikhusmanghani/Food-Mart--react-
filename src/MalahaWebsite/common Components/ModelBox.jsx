@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CgClose } from "react-icons/cg";
-import LoginSignup from "./Signup_Login";
+import BothForms from "../Form Page/bothForms";
 
 const ModalBox = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +28,7 @@ const ModalBox = () => {
       >
         Open Modal
       </button>
-      <LoginSignup />
+      <bothForms />
 
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50 mx-2">

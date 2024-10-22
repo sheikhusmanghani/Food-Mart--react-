@@ -9,7 +9,7 @@ import "./index.css";
 import Fruits from "./MalahaWebsite/components/Fruits";
 import Essentials from "./MalahaWebsite/components/Essentials";
 import Veggies from "./MalahaWebsite/components/Veges";
-import LoginSignup from "./MalahaWebsite/Form Page/Signup_Login";
+import BothForms from "./MalahaWebsite/Form Page/bothForms";
 import { FirebaseProvider } from "./MalahaWebsite/Firebase/FirebaseContext";
 
 const App = () => {
@@ -55,7 +55,7 @@ const App = () => {
         },
         {
           path: "/form",
-          element: <LoginSignup />,
+          element: <BothForms />,
         },
       ],
     },

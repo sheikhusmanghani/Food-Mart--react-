@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import '../../index.css'
 import {
-  XMarkIcon,
   PresentationChartBarIcon,
   UserCircleIcon,
   Cog6ToothIcon,
@@ -10,6 +10,7 @@ import {
 import { Link, NavLink } from "react-router-dom";
 import { MdAddShoppingCart, MdOutlineFeedback } from "react-icons/md";
 import { HiMenu } from "react-icons/hi";
+import { CgMenu } from "react-icons/cg";
 
 export default function Sidebar() {
   // Sidebar visibility state
@@ -26,12 +27,12 @@ export default function Sidebar() {
       <div className="pt-2">
         <button
           onClick={toggleSidebar}
-          className="text-gray-500 focus:outline-none"
+          className="text-gray-500 text-3xl focus:outline-none"
         >
           {isOpen ? (
-            <XMarkIcon className="h-6 w-6" />  
+            <CgMenu className="h-6 w-8 text-3xl" />
           ) : (
-            <HiMenu className="h-6 w-6 text-gray-600" />  
+            <HiMenu className="h-6 w-6 text-gray-600" />
           )}
         </button>
       </div>
@@ -46,7 +47,7 @@ export default function Sidebar() {
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             Food Mart
           </h2>
-          <ul className="space-y-2">
+          <ul className="sidebarLinks space-y-2">
             <li>
               <NavLink
                 to={"/home"}

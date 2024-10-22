@@ -58,45 +58,46 @@
 // export default Toast;
 
 // toast
-// export function successtoast(msg) {
-//   Toastify({
-//     text: `${msg}`,
-//     position: "center",
-//     style: {
-//       background: "linear-gradient(to right, #20b858, #15803d)",
-//       borderRadius: "10px",
-//       padding: "15px 20px",
-//       fontSize: "20px",
-//       maxWidth: "500px",
-//       textAlign: "center",
-//       margin: "15px",
-//     },
-//     duration: 2000,
-//   }).showToast();
-// }
-
-// export function errortoast(msg) {
-//   Toastify({
-//     text: `${msg}`,
-//     style: {
-//       background: "linear-gradient(to right, red, darkred)",
-//       borderRadius: "10px",
-//       padding: "15px 20px",
-//       fontSize: "20px",
-//       maxWidth: "500px",
-//       textAlign: "center",
-//       margin: "15px",
-//     },
-//     duration: 2000,
-//   }).showToast();
-// }
-
-export function successtoast(msg){
-    Toastify({
-      text: "This is a toast",
-      className: "info",
-      style: {
-        background: "linear-gradient(to right, #00b09b, #96c93d)",
-      },
-    }).showToast();
+function successtoast(msg) {
+  Toastify({
+    text: `${msg}`,
+    position: "center",
+    style: {
+      background: "linear-gradient(to right, #20b858, #15803d)",
+      borderRadius: "10px",
+      padding: "15px 20px",
+      fontSize: "20px",
+      maxWidth: "500px",
+      textAlign: "center",
+      margin: "15px",
+    },
+    duration: 2000,
+  }).showToast();
 }
+
+function errortoast(msg) {
+  Toastify({
+    text: `${msg}`,
+    position: "center",
+    style: {
+      background: "linear-gradient(to right, red, darkred)",
+      borderRadius: "10px",
+      padding: "15px 20px",
+      fontSize: "20px",
+      maxWidth: "500px",
+      textAlign: "center",
+      margin: "15px",
+    },
+    duration: 2000,
+  }).showToast();
+}
+export { successtoast, errortoast };
+// export function successtoast(msg){
+//     Toastify({
+//       text: "This is a toast",
+//       className: "info",
+//       style: {
+//         background: "linear-gradient(to right, #00b09b, #96c93d)",
+//       },
+//     }).showToast();
+// }

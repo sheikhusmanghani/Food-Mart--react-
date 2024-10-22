@@ -28,21 +28,13 @@
   font-family: "Poppins";
 }
 
-@media (min-width: 640px) {
-  .active {
-    /* color: rgb(17, 24, 39); */
-    border-top: 4px solid black;
-  }
+.active {
+  /* color: rgb(17, 24, 39); */
+  border-top: 4px solid black;
 }
 
-@media (max-width: 640px) {
-  .active { 
-    font-weight: bold;
-    /* border-top: 4px solid black; */
-  }
-}
-
-section div a.active {
-  border: none;
+/* bold for shop Pages  */
+section .shopPages a.active {
   font-weight: bold;
+  border: none;
 }
