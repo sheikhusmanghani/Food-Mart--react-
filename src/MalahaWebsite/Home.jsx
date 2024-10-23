@@ -10,7 +10,7 @@ import { NavLink } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="bg-gray-100 mt-[70px]"> 
+    <div className="bg-gray-100 mt-[65px]"> 
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-green-800 via-green-500 to-green-700  text-white py-16">
         <div className="container mx-auto px-4 text-center text-wrap">

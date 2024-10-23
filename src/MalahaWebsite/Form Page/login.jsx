@@ -13,7 +13,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const login = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
 
     try {
       const user = await signInWithEmailAndPassword(

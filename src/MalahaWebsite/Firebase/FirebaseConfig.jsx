@@ -1,7 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { useContext } from "react";
-import { FirebaseContext } from "./FirebaseContext";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAGqtnyeNjjSaTSBeLB3IA7Qi3ZAk6LhGo",

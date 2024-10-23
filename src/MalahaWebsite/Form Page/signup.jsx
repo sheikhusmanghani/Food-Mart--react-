@@ -1,12 +1,30 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import React, { useContext } from "react";
 import { FirebaseContext } from "../Firebase/FirebaseContext";
 import { errortoast, successtoast } from "../common Components/Alert";
 import { FcGoogle } from "react-icons/fc";
 import { auth } from "../Firebase/FirebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   //
+  const provider = new GoogleAuthProvider();
+  // Sign-in function
+  const signInWithGoogle = async () => {
+    const user = await signInWithPopup(auth, provider)
+      .then((result) => {
+        successtoast("Successfully Signed In !");
+        navigate("/shop");
+      })
+      .catch((error) => {
+        errortoast("Error During Sign In:");
+      });
+  };
   // this state is for getting states from Firebase
   const { signupData, setSignupData } = useContext(FirebaseContext);
 
@@ -20,8 +38,8 @@ const Signup = () => {
         signupData.email,
         signupData.password
       );
-      e.target.reset();
-      successtoast("User Successfully reated !");
+      // e.target.reset(); // ye kaam nhi kr rha hy
+      successtoast("User Successfully Created !");
       //
     } catch (error) {
       errortoast(error.message);
@@ -75,11 +93,15 @@ const Signup = () => {
       <button className="w-full mainColor py-2 rounded-md hover:opacity-90 transition-all duration-300 transform hover:scale-105">
         Sign Up
       </button>
+      {/* google auth */}
       <div>
-        <div className="w-full flex justify-center bg-gray-200 bor der -2 text-green- bo rder -green-700 rounded-md py-2 text-gray-600 hover:scale-105 transition-all ">
+        <span
+          className="w-full flex justify-center bg-gray-200 rounded-md py-2 text-gray-600 hover:scale-105 transition-all  cursor-pointer"
+          onClick={signInWithGoogle}
+        >
           <FcGoogle className="text-2xl  mr-3" />
           Continue With Google
-        </div>
+        </span>
       </div>
     </form>
   );

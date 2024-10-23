@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import '../../index.css'
+import React, { useContext, useState } from "react";
+import "../../index.css";
 import {
   PresentationChartBarIcon,
   UserCircleIcon,
@@ -11,10 +11,23 @@ import { Link, NavLink } from "react-router-dom";
 import { MdAddShoppingCart, MdOutlineFeedback } from "react-icons/md";
 import { HiMenu } from "react-icons/hi";
 import { CgMenu } from "react-icons/cg";
+import { LiaUnlockAltSolid } from "react-icons/lia";
+import { signOut } from "firebase/auth";
+import { auth } from "../Firebase/FirebaseConfig";
+import { errortoast, successtoast } from "../common Components/Alert";
+import { FirebaseContext } from "../Firebase/FirebaseContext";
+import { ModalBox } from "../common Components/ModelBox";
 
 export default function Sidebar() {
+  //
+  const { isLoggedIn, setIsLoggedIn } = useContext(FirebaseContext);
   // Sidebar visibility state
   const [isOpen, setIsOpen] = useState(false);
+  // modal box for logout
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
   // Function to toggle sidebar visibility
   const toggleSidebar = () => {
@@ -44,9 +57,7 @@ export default function Sidebar() {
         } transition-transform duration-300 ease-in-out`}
       >
         <div className="p-4">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            Food Mart
-          </h2>
+          <h2 className="text-2xl font-bold text-green-700 mb-4">Food Mart</h2>
           <ul className="sidebarLinks space-y-2">
             <li>
               <NavLink
@@ -75,15 +86,56 @@ export default function Sidebar() {
                 <span className="ml-3">Contact</span>
               </NavLink>
             </li>
+
+            {!isLoggedIn == false && (
+              <li>
+                <Link className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                  <UserCircleIcon className="h-5 w-5 text-gray-500" />
+                  <span className="ml-3">Profile</span>
+                </Link>
+              </li>
+            )}
+
             <li>
+              <NavLink
+                to={"/form"}
+                className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg"
+              >
+                <LiaUnlockAltSolid className="h-5 w-5 text-gray-500" />
+                <span className="ml-3">Sign In</span>
+              </NavLink>
+            </li>
+
+            {!isLoggedIn == false && (
+              <li>
+                <div className="flex items-center p-2 text-base font-medium cursor-pointer text-gray-700 hover:bg-gray-100 rounded-lg">
+                  <PowerIcon className="h-5 w-5 text-gray-500" />
+                  <span
+                    className="ml-3"
+                    onClick={openModal}
+                  >
+                    Log Out
+                  </span>
+                </div>
+              </li>
+            )}
+
+            {/* <li>
+              <Link className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <Cog6ToothIcon className="h-5 w-5 text-gray-500" />
+                <span className="ml-3">Settings</span>
+              </Link>
+            </li>
+             */}
+            {/* <li>
               <Link
-                to={"/dashboard"}
+                to={""}
                 className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg"
               >
                 <PresentationChartBarIcon className="h-5 w-5 text-gray-500" />
                 <span className="ml-3">Dashboard</span>
               </Link>
-            </li>
+            </li> */}
             {/* <li>
               <Link to={}
                 
@@ -107,24 +159,7 @@ export default function Sidebar() {
                 </span>
               </Link>
             </li> */}
-            <li>
-              <Link className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
-                <UserCircleIcon className="h-5 w-5 text-gray-500" />
-                <span className="ml-3">Profile</span>
-              </Link>
-            </li>
-            <li>
-              <Link className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
-                <Cog6ToothIcon className="h-5 w-5 text-gray-500" />
-                <span className="ml-3">Settings</span>
-              </Link>
-            </li>
-            <li>
-              <Link className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
-                <PowerIcon className="h-5 w-5 text-gray-500" />
-                <span className="ml-3">Log Out</span>
-              </Link>
-            </li>
+
             {/* <li>
               <Link to={}
                 
@@ -145,6 +180,12 @@ export default function Sidebar() {
           className="fixed inset-0 bg-black bg-opacity-50 z-40"
         />
       )}
+      {/* modal box ki jaga */}
+      <ModalBox
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}
+        ques={"Really ! Do You Want To Logout ?"}
+      />
     </div>
   );
 }

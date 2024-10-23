@@ -6,7 +6,7 @@ const BothForms = () => {
   const [tab, setTab] = useState("signup"); // for changing signup form to login
 
   return (
-    <div className=" bg-gray-300 pt-[100px] pb-10 flex items-center justify-center">
+    <div className=" bg-gray-100 pt-[100px] pb-10 flex items-center justify-center">
       <div className="w-[90vw] max-w-lg bg-white rounded-lg overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
         <div className=" text-center py-6 mainColor">
           <h1 className="text-3xl font-bold ">Welcome</h1>

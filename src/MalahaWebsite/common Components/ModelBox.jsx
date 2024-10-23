@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import { signOut } from "firebase/auth";
+import React, { useContext, useState } from "react";
 import { CgClose } from "react-icons/cg";
-import BothForms from "../Form Page/bothForms";
+import { auth } from "../Firebase/FirebaseConfig";
+import { successtoast } from "./Alert";
+import { FirebaseContext } from "../Firebase/FirebaseContext";
 
-const ModalBox = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const ModalBox = ({ isOpen, setIsOpen, ques }) => {
+  // for vars of firebase
+  const contextData = useContext(FirebaseContext);
+
   const [isBouncing, setIsBouncing] = useState(false);
 
-  // Function to open the modal with animation
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
   const closeModal = () => {
-    setIsOpen(false);
+    setIsOpen(false); // Modal close karne ke liye
   };
 
   const handleOverlayClick = () => {
@@ -21,16 +21,8 @@ const ModalBox = () => {
   };
 
   return (
-    <div className="mt-20">
-      <button
-        className=" mainColor px-4 py-2 rounded-lg shadow-md hover:bg-green-700 transition duration-300"
-        onClick={openModal}
-      >
-        Open Modal
-      </button>
-      <bothForms />
-
-      {isOpen && (
+    <>
+      {isOpen && ( // Modal tabhi show hoga jab isOpen true hoga
         <div className="fixed inset-0 flex items-center justify-center z-50 mx-2">
           {/* Background overlay */}
           <div
@@ -45,37 +37,46 @@ const ModalBox = () => {
             } ${isBouncing ? "scale-[105%]" : ""}`}
           >
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-semibold text-gray-800">Sign In</h3>
+              <h6 className="text-xl font-semibold text-gray-800">{ques}</h6>
               <button
                 className="text-gray-500 hover:text-gray-800 text-xl"
-                onClick={closeModal}
+                onClick={closeModal} // Close button
               >
                 <CgClose />
               </button>
             </div>
 
-            <div className="mb-4">
+            {/* modal body */}
+            {/* <div className="mb-4">
               <p className="text-gray-600">
                 This is a modal with smooth animations and bounce effect! Click
                 outside the modal to see the subtle bounce.
               </p>
-            </div>
+            </div> */}
 
             <div className="flex justify-end space-x-3">
               <button
-                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
-                onClick={closeModal}
+                className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+                onClick={closeModal} // Close button
               >
                 Close
               </button>
-              <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300">
-                Save Changes
+              <button
+                onClick={async () => {
+                  await signOut(auth);
+                  closeModal(); // Close modal after logout
+                  successtoast("Successfully Logout ! ");
+                  contextData.setIsLoggedIn(false);
+                }}
+                className="bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300"
+              >
+                Logout
               </button>
             </div>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

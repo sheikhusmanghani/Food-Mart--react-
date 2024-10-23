@@ -16,20 +16,32 @@ export const FirebaseProvider = ({ children }) => {
     password: "",
   });
 
+  // state for login checking
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  console.log("isloggedin==> ", isLoggedIn);
+
   onAuthStateChanged(auth, (user) => {
+    //
     if (user) {
       console.log("Login hy");
-      const uid = user.uid;
-      // ...
+      setIsLoggedIn(true);
+      //
     } else {
-      // User is signed out
       console.log("Logout hy");
     }
   });
 
   return (
     <FirebaseContext.Provider
-      value={{ signupData, setSignupData, loginData, setLoginData }}
+      value={{
+        signupData,
+        setSignupData,
+        loginData,
+        setLoginData,
+        isLoggedIn,
+        setIsLoggedIn,
+      }}
     >
       {children}
     </FirebaseContext.Provider>
