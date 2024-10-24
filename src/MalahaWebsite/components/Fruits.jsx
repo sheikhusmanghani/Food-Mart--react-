@@ -4,12 +4,12 @@ import { fruitsData } from "./productDetails.js";
 const Fruits = () => {
   return (
     <div className="flex flex-wrap justify-center">
-      {fruitsData.map((arrObj, ind) => {
-        const { imgSrc, price, weight, title } = arrObj;
+      {fruitsData.map((arrObj) => {
+        const { imgSrc, price, weight, title, id } = arrObj;
 
         return (
           <ProductCard
-            key={ind}
+            key={id}
             image={imgSrc}
             title={title}
             price={price}

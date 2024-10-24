@@ -11,6 +11,8 @@ import Essentials from "./MalahaWebsite/components/Essentials";
 import Veggies from "./MalahaWebsite/components/Veges";
 import BothForms from "./MalahaWebsite/Form Page/bothForms";
 import { FirebaseProvider } from "./MalahaWebsite/Firebase/FirebaseContext";
+import Dashboard from "./MalahaWebsite/Dashboard";
+import CartProvider from "./MalahaWebsite/items cart/CartContext";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -57,12 +59,18 @@ const App = () => {
           path: "/form",
           element: <BothForms />,
         },
+        {
+          path: "/dashboard",
+          element: <Dashboard />,
+        },
       ],
     },
   ]);
   return (
     <FirebaseProvider>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </FirebaseProvider>
   );
 };

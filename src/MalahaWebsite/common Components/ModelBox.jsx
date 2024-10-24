@@ -36,14 +36,14 @@ const ModalBox = ({ isOpen, setIsOpen, ques }) => {
               isOpen ? "opacity-100 scale-100" : "opacity-0 scale-90"
             } ${isBouncing ? "scale-[105%]" : ""}`}
           >
-            <div className="flex justify-between items-center mb-4">
-              <h6 className="text-xl font-semibold text-gray-800">{ques}</h6>
-              <button
+            <div className="mb-4">
+              <h6 className="font-semibold text-gray-800 ">{ques}</h6>
+              {/* <button
                 className="text-gray-500 hover:text-gray-800 text-xl"
                 onClick={closeModal} // Close button
               >
                 <CgClose />
-              </button>
+              </button> */}
             </div>
 
             {/* modal body */}
@@ -54,7 +54,7 @@ const ModalBox = ({ isOpen, setIsOpen, ques }) => {
               </p>
             </div> */}
 
-            <div className="flex justify-end space-x-3">
+            <div className="space-x-3">
               <button
                 className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
                 onClick={closeModal} // Close button

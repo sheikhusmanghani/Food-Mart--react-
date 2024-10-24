@@ -8,7 +8,11 @@ import {
   HomeIcon,
 } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
-import { MdAddShoppingCart, MdOutlineFeedback } from "react-icons/md";
+import {
+  MdAddShoppingCart,
+  MdOutlineDashboardCustomize,
+  MdOutlineFeedback,
+} from "react-icons/md";
 import { HiMenu } from "react-icons/hi";
 import { CgMenu } from "react-icons/cg";
 import { LiaUnlockAltSolid } from "react-icons/lia";
@@ -96,6 +100,14 @@ export default function Sidebar() {
               </li>
             )}
 
+            {!isLoggedIn == false && (
+              <li>
+                <div className="flex items-center p-2 text-base font-medium cursor-pointer text-gray-700 hover:bg-gray-100 rounded-lg">
+                  <MdOutlineDashboardCustomize className="h-5 w-5 text-gray-500" />
+                  <span className="ml-3">Dashboard</span>
+                </div>
+              </li>
+            )}
             <li>
               <NavLink
                 to={"/form"}
@@ -110,10 +122,7 @@ export default function Sidebar() {
               <li>
                 <div className="flex items-center p-2 text-base font-medium cursor-pointer text-gray-700 hover:bg-gray-100 rounded-lg">
                   <PowerIcon className="h-5 w-5 text-gray-500" />
-                  <span
-                    className="ml-3"
-                    onClick={openModal}
-                  >
+                  <span className="ml-3" onClick={openModal}>
                     Log Out
                   </span>
                 </div>

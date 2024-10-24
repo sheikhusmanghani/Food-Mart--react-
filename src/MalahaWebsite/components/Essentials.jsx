@@ -5,11 +5,11 @@ const EssentialsData = () => {
   return (
     <div className="flex flex-wrap justify-center">
       {essentialsData.map((arrObj, ind) => {
-        const { imgSrc, price, weight, title } = arrObj;
+        const { imgSrc, price, weight, title ,id} = arrObj;
 
         return (
           <ProductCard
-            key={ind}
+            key={id}
             image={imgSrc}
             title={title}
             price={price}

@@ -30,15 +30,14 @@ const Signup = () => {
 
   const signup = async (e) => {
     e.preventDefault();
-    console.log(e.target);
-
+    // console.log(e.target.children[0].children[0].value);
     try {
       const usecredentials = await createUserWithEmailAndPassword(
         auth,
         signupData.email,
         signupData.password
       );
-      // e.target.reset(); // ye kaam nhi kr rha hy
+
       successtoast("User Successfully Created !");
       //
     } catch (error) {
@@ -90,7 +89,10 @@ const Signup = () => {
         />
         {/* <i className=" absolute left-3 top-3 text-gray-400"></i> */}
       </div>
-      <button className="w-full mainColor py-2 rounded-md hover:opacity-90 transition-all duration-300 transform hover:scale-105">
+      <button
+        type="submit"
+        className="w-full mainColor py-2 rounded-md hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+      >
         Sign Up
       </button>
       {/* google auth */}

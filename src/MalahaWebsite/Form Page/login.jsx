@@ -13,7 +13,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const login = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     try {
       const user = await signInWithEmailAndPassword(
@@ -63,7 +63,10 @@ const Login = () => {
         />
         <i className="fas fa-lock absolute left-3 top-3 text-gray-400"></i>
       </div>
-      <button className="w-full mainColor py-2 rounded-md hover:opacity-90 transition-all duration-300 transform hover:scale-105">
+      <button
+        type="submit"
+        className="w-full mainColor py-2 rounded-md hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+      >
         Login
       </button>
     </form>

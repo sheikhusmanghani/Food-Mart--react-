@@ -1,16 +1,16 @@
 import ProductCard from "./Cart";
 import { veggiesData } from "./productDetails.js";
- 
 
 const Veggies = () => {
   return (
     <div className="flex flex-wrap justify-center">
-      {veggiesData.map((arrObj, ind) => {
-        const { imgSrc, price, weight, title } = arrObj;
+      {veggiesData.map((arrObj) => {
+        const { id, imgSrc, price, weight, title } = arrObj;
+        console.log(id)
 
         return (
           <ProductCard
-            key={ind}
+            key={id}
             image={imgSrc}
             title={title}
             price={price}

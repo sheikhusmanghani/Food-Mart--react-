@@ -56,7 +56,7 @@
 // };
 
 // export default Toast;
- 
+
 // toast
 //
 function successtoast(msg) {
@@ -75,6 +75,7 @@ function errortoast(msg) {
   Toastify({
     text: `${msg}`,
     duration: 2000,
+    position: "center",
     style: {
       background: "linear-gradient(to right, red, darkred)",
     },

@@ -28,6 +28,7 @@ export const FirebaseProvider = ({ children }) => {
       setIsLoggedIn(true);
       //
     } else {
+      setIsLoggedIn(false);
       console.log("Logout hy");
     }
   });
