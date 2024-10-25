@@ -36,12 +36,13 @@ function Header() {
           to="form"
           className="hover:text-gray-900 transition-colors duration-300 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-br-full rounded-tl-full text-center pb-1 pt-1.5 uppercase w-[110px] text-[15px]"
         >
-          Sign In
+          Join Us
         </NavLink>
       </nav>
 
       {/* Mobile Menu Button */}
       <div className="md:hi dden flex flex-col items-end text-center">
+        {/* <h6 className="inline">Usman</h6> //yaha kaam nhi kr rha hy */}
         <Sidebar />
       </div>
 

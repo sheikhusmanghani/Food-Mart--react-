@@ -40,8 +40,15 @@ export default function Sidebar() {
 
   return (
     <div>
-      {/* Mobile Menu Icon */}
-      <div className="pt-2">
+      {/* Menu Icon */}
+      <div className="flex pt-2">
+        {/* user hy ya nhi , maloom krna  */}
+        {isLoggedIn ? (
+          <p className="text-xl mr-3 uppercase">Logged in</p>
+        ) : (
+          <p className="text-xl mr-3">NO USER</p>
+        )}
+
         <button
           onClick={toggleSidebar}
           className="text-gray-500 text-3xl focus:outline-none"

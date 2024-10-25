@@ -6,7 +6,7 @@ import { FirebaseContext } from "../Firebase/FirebaseContext";
 const ProductCard = ({ image, title, price, weight }) => {
   const { cartitems, setCartItems } = useContext(CartContext); // context for cart
   const { isLoggedIn, setIsLoggedIn } = useContext(FirebaseContext); // context for cart
-   
+   console.log(cartitems)
   // addtoCart
   function addtoCart() {
     if (isLoggedIn === true) {
