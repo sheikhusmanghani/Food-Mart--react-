@@ -1,10 +1,14 @@
-import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./is-ki.css";
 import "../index.css";
 import Sidebar from "./components/Sidebar";
+import { useContext } from "react";
+import { FirebaseContext } from "./Firebase/FirebaseContext";
 
 function Header() {
+  const { isLoggedIn } = useContext(FirebaseContext);
+  console.log("from navbar -->", isLoggedIn);
+
   return (
     <header className="fixed w-full top-0 flex items-center justify-between sm:justify-between  py-3 px-5  bg-gray-100 shadow-md z-20">
       {/* Logo / Title */}
@@ -32,12 +36,14 @@ function Header() {
         >
           Contact
         </NavLink>
-        <NavLink
-          to="form"
-          className="hover:text-gray-900 transition-colors duration-300 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-br-full rounded-tl-full text-center pb-1 pt-1.5 uppercase w-[110px] text-[15px]"
-        >
-          Join Us
-        </NavLink>
+        {!isLoggedIn && (
+          <NavLink
+            to="form"
+            className="hover:text-gray-900 transition-colors duration-300 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-br-full rounded-tl-full text-center pb-1 pt-1.5 uppercase w-[110px] text-[15px]"
+          >
+            Join Us
+          </NavLink>
+        )}
       </nav>
 
       {/* Mobile Menu Button */}
@@ -45,55 +51,6 @@ function Header() {
         {/* <h6 className="inline">Usman</h6> //yaha kaam nhi kr rha hy */}
         <Sidebar />
       </div>
-
-      {/*  sign in btn in navbar  */}
-      {/* <NavLink
-        to={"form"}
-        className="md:inline-block hidden hover:text-gray-900 font-bold transition-colors duration-300 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-br-full rounded-tl-full text-center py-1.5 uppercase w-[120px] text-[17px]"
-      >
-        Sign in
-      </NavLink> */}
-      {/* <button
-          onClick={() => setShowMenu(!showMenu)}
-          className="text-2xl text-gray-700 hover:text-gray-900 transition-colors duration-300"
-        >
-          {showMenu ? <GrClose /> : <GiHamburgerMenu />}
-        </button> */}
-
-      {/* Mobile Menu */}
-      {/* <div
-          className={`${
-            showMenu ? "flex" : "hidden"
-          } flex-col items-center bg-gray-100  border-4 border-gray-200 border-spacing-0.5 p-4 absolute top-16 right-4 w-40 rounded-md shadow-lg space-y-3 transition-all duration-500 ease-in-out transform ${
-            showMenu ? "scale-100" : "scale-0"
-          }`}
-        >
-          <NavLink
-            to="/"
-            className="block text-gray-700 hover:text-gray-900 "
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/shop"
-            className="block text-gray-700 hover:text-gray-900 "
-          >
-            Shop
-          </NavLink>
-          <NavLink
-            to="/contact"
-            className="block text-gray-700 hover:text-gray-900  "
-          >
-            Contact
-          </NavLink> */}
-      {/* for sign in and up on mobile view */}
-      {/* <NavLink
-            to="/form"
-            className="block text-gray-700 hover:text-gray-900 transition-colors duration-300 "
-          >
-            Sign in . up
-          </NavLink> */}
-      {/* </div> */}
     </header>
   );
 }

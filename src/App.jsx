@@ -12,7 +12,7 @@ import Veggies from "./MalahaWebsite/components/Veges";
 import BothForms from "./MalahaWebsite/Form Page/bothForms";
 import { FirebaseProvider } from "./MalahaWebsite/Firebase/FirebaseContext";
 import Dashboard from "./MalahaWebsite/Dashboard";
-import CartProvider from "./MalahaWebsite/items cart/CartContext";
+import CartProvider from "./MalahaWebsite/Contexts/CartContext";
 
 const App = () => {
   const router = createBrowserRouter([

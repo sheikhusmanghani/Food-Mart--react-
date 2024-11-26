@@ -17,8 +17,7 @@ import { HiMenu } from "react-icons/hi";
 import { CgMenu } from "react-icons/cg";
 import { LiaUnlockAltSolid } from "react-icons/lia";
 import { signOut } from "firebase/auth";
-import { auth } from "../Firebase/FirebaseConfig";
-import { errortoast, successtoast } from "../common Components/Alert";
+import { auth } from "../Firebase/FirebaseConfig"; 
 import { FirebaseContext } from "../Firebase/FirebaseContext";
 import { ModalBox } from "../common Components/ModelBox";
 

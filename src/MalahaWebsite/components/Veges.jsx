@@ -6,7 +6,7 @@ const Veggies = () => {
     <div className="flex flex-wrap justify-center">
       {veggiesData.map((arrObj) => {
         const { id, imgSrc, price, weight, title } = arrObj;
-        console.log(id)
+        // console.log(id) // ok
 
         return (
           <ProductCard

@@ -1,18 +1,21 @@
 import React, { useContext } from "react";
 import { FaCartPlus } from "react-icons/fa6";
-import { CartContext } from "../items cart/CartContext";
+import { CartContext } from "../Contexts/CartContext";
 import { FirebaseContext } from "../Firebase/FirebaseContext";
+import { toast } from "react-toastify";
 
 const ProductCard = ({ image, title, price, weight }) => {
   const { cartitems, setCartItems } = useContext(CartContext); // context for cart
   const { isLoggedIn, setIsLoggedIn } = useContext(FirebaseContext); // context for cart
-   console.log(cartitems)
+
+  //  console.log(cartitems)
+
   // addtoCart
   function addtoCart() {
     if (isLoggedIn === true) {
       setCartItems([...cartitems, { title, price, weight }]);
     } else {
-      alert("Please Login First");
+      toast("Please Login First");
       // setIsLoggedIn(false); // set loggedin to false to prevent adding items to cart while logged out
     }
   }

@@ -1,9 +1,8 @@
 import { signOut } from "firebase/auth";
 import React, { useContext, useState } from "react";
-import { CgClose } from "react-icons/cg";
 import { auth } from "../Firebase/FirebaseConfig";
-import { successtoast } from "./Alert";
 import { FirebaseContext } from "../Firebase/FirebaseContext";
+import { toast } from "react-toastify";
 
 const ModalBox = ({ isOpen, setIsOpen, ques }) => {
   // for vars of firebase
@@ -32,7 +31,7 @@ const ModalBox = ({ isOpen, setIsOpen, ques }) => {
 
           {/* Modal content with smooth open/close transition */}
           <div
-            className={`bg-white rounded-lg shadow-lg z-10 w-full max-w-lg p-6 relative transition-transform transition-opacity duration-500 ease-out transform ${
+            className={`bg-white rounded-lg shadow-lg z-10 w-full max-w-lg p-6 relative transition-transform duration-500 ease-out transform ${
               isOpen ? "opacity-100 scale-100" : "opacity-0 scale-90"
             } ${isBouncing ? "scale-[105%]" : ""}`}
           >
@@ -64,8 +63,11 @@ const ModalBox = ({ isOpen, setIsOpen, ques }) => {
               <button
                 onClick={async () => {
                   await signOut(auth);
+
                   closeModal(); // Close modal after logout
-                  successtoast("Successfully Logout ! ");
+
+                  toast.success("User signed in successfully !" );
+
                   contextData.setIsLoggedIn(false);
                 }}
                 className="bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300"

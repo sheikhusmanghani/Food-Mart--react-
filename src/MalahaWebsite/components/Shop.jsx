@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Shop = () => {
+const ShopTwo = () => {
   const navigate = useNavigate();
   useEffect(() => {
     navigate("/shop/fruits");
   }, []);
-  return <div>Shop</div>;
+  return;
 };
 
-export default Shop;
+export default ShopTwo;

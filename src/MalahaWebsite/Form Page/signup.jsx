@@ -1,63 +1,112 @@
+import { useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithPopup,
+  FacebookAuthProvider,
   GoogleAuthProvider,
+  GithubAuthProvider,
 } from "firebase/auth";
-import React, { useContext } from "react";
-import { FirebaseContext } from "../Firebase/FirebaseContext";
-import { errortoast, successtoast } from "../common Components/Alert";
-import { FcGoogle } from "react-icons/fc";
-import { auth } from "../Firebase/FirebaseConfig";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
+import { auth, db } from "../Firebase/FirebaseConfig";
+import { doc, setDoc } from "firebase/firestore";
+import { VscGithubInverted } from "react-icons/vsc";
+import { BsFacebook } from "react-icons/bs";
 
 const Signup = () => {
   const navigate = useNavigate();
-  //
-  const provider = new GoogleAuthProvider();
-  // Sign-in function
-  const signInWithGoogle = async () => {
-    const user = await signInWithPopup(auth, provider)
-      .then((result) => {
-        successtoast("Successfully Signed In !");
-        navigate("/shop");
-      })
-      .catch((error) => {
-        errortoast("Error During Sign In:");
-      });
-  };
-  // this state is for getting states from Firebase
-  const { signupData, setSignupData } = useContext(FirebaseContext);
+  const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
-  const signup = async (e) => {
-    e.preventDefault();
-    // console.log(e.target.children[0].children[0].value);
+  //  signup form data
+  const [signupData, setSignupData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  //------------------------------------------------ Google Sign-In Function
+  const signInWithGoogle = async () => {
     try {
-      const usecredentials = await createUserWithEmailAndPassword(
+      await signInWithPopup(auth, googleProvider);
+
+      toast.success("User signed in successfully !");
+
+      navigate("/shop");
+    } catch (error) {
+      toast.error(error.code.split("/")[1].split("-").join(" "));
+    }
+  };
+  //------------------------------------------------ facebook Sign-In Function
+  const signInWithFacebook = async () => {
+    try {
+      // await signInWithPopup(auth, facebookProvider);// not working
+      toast.warning("please sign in with google");
+      // toast.success("User signed in successfully !");
+
+      // navigate("/shop");
+    } catch (error) {
+      toast.error(error.code.split("/")[1].split("-").join(" "));
+    }
+  };
+  //------------------------------------------------ github Sign-In Function
+  const signInWithGithub = async () => {
+    try {
+      toast.warning("please sign in with google");
+      // await signInWithPopup(auth, githubProvider);;// not working
+
+      // toast.success("User signed in successfully !" );
+
+      // navigate("/shop");
+    } catch (error) {
+      toast.error(
+        error.code.split("/")[1].split("-").join(" ") || "Sign-in failed!"
+      );
+    }
+  };
+
+  // console.log(`signup chal rha subimt `);
+
+  //  --- --------- ----- -----------------------------    Signup Function
+  const signupOnSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
         auth,
         signupData.email,
         signupData.password
       );
 
-      successtoast("User Successfully Created !");
+      toast.success("User signed in successfully !");
+
+      navigate("/shop");
+
+      // set in firestore
+      await setDoc(doc(db, "users", userCredential.user.uid), signupData); // ok
       //
-    } catch (error) {
-      errortoast(error.message);
+    } catch (e) {
+      toast.error(error.code.split("/")[1].split("-").join(" "));
     }
   };
 
-  //  this function is for user name , email and password / change handle
+  // Signup Input Change Handler
   const signuphandler = (e) => {
     const { name, value } = e.target;
-    setSignupData({ ...signupData, [name]: value });
+    console.log(`Sign Up data : ${name} ${value}`);
+    // Update form
+    setSignupData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
-    <form className="space-y-4" onSubmit={signup}>
+    <form className="space-y-4" onSubmit={signupOnSubmit}>
+      {/* Full Name Input */}
       <div className="relative">
         <input
           type="text"
           name="username"
-          className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 "
+          className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
           placeholder="Full Name"
           required
           onChange={signuphandler}
@@ -65,11 +114,13 @@ const Signup = () => {
         />
         <i className="fas fa-user absolute left-3 top-3 text-gray-400"></i>
       </div>
+
+      {/* Email Input */}
       <div className="relative">
         <input
           type="email"
           name="email"
-          className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 "
+          className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
           placeholder="Email"
           required
           onChange={signuphandler}
@@ -77,32 +128,58 @@ const Signup = () => {
         />
         <i className="fas fa-envelope absolute left-3 top-3 text-gray-400"></i>
       </div>
+
+      {/* Password Input */}
       <div className="relative">
         <input
           type="password"
           name="password"
-          className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 "
+          className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
           placeholder="Password"
           required
           onChange={signuphandler}
           value={signupData.password}
         />
-        {/* <i className=" absolute left-3 top-3 text-gray-400"></i> */}
       </div>
+
+      {/* Submit Button */}
       <button
         type="submit"
         className="w-full mainColor py-2 rounded-md hover:opacity-90 transition-all duration-300 transform hover:scale-105"
       >
         Sign Up
       </button>
-      {/* google auth */}
+
+      {/* Google Sign-In */}
       <div>
         <span
-          className="w-full flex justify-center bg-gray-200 rounded-md py-2 text-gray-600 hover:scale-105 transition-all  cursor-pointer"
+          className="w-full flex justify-center bg-gray-200 rounded-md py-2 text-gray-600 hover:scale-105 transition-all cursor-pointer"
           onClick={signInWithGoogle}
         >
-          <FcGoogle className="text-2xl  mr-3" />
+          <FcGoogle className="text-2xl mr-3" />
           Continue With Google
+        </span>
+      </div>
+
+      {/* Facebook Sign-In */}
+      <div>
+        <span
+          className="w-full flex justify-center bg-gray-200 rounded-md py-2 text-gray-600 hover:scale-105 transition-all cursor-pointer"
+          onClick={signInWithFacebook}
+        >
+          <BsFacebook className="text-2xl mr-3 text-blue-800" />
+          Continue With Facebook
+        </span>
+      </div>
+
+      {/* Github Sign-In */}
+      <div>
+        <span
+          className="w-full flex justify-center bg-gray-200 rounded-md py-2 text-gray-600 hover:scale-105 transition-all cursor-pointer"
+          onClick={signInWithGithub}
+        >
+          <VscGithubInverted className="text-2xl mr-3 text-black" />
+          Continue With Github
         </span>
       </div>
     </form>

@@ -4,7 +4,7 @@ ul li :hover {
 }
 .header {
   position: sticky;
-  width: -webkit-fill-available;
+  /* width: -webkit-fill-available; */
   top: 0;
 }
 .icon:hover {

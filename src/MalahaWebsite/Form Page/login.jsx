@@ -1,37 +1,37 @@
-import React, { useContext } from "react";
-import { FirebaseContext } from "../Firebase/FirebaseContext";
-import { errortoast, successtoast } from "../common Components/Alert";
+import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase/FirebaseConfig";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   //
-  // this state is for getting states from Firebase
-  const { loginData, setLoginData } = useContext(FirebaseContext);
-  // for navigate
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // for navigation
+  // form data
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
 
   const login = async (e) => {
     e.preventDefault();
-
     try {
       const user = await signInWithEmailAndPassword(
         auth,
         loginData.email,
         loginData.password
       );
-      successtoast("Login Successful ! ");
-      setTimeout(() => {
-        navigate("/shop");
-      }, 1000);
+      toast.success("User successfully Logged In  !");
+
+      navigate("/shop");
+
       //
     } catch (error) {
-      errortoast(error.message);
+      toast.error(error.code.split("/")[1].split("-").join(" "));
     }
   };
 
-  //  this function is for Login  change handle
+  //   Login  input handler
   const loginhandler = (e) => {
     const { name, value } = e.target;
     setLoginData({ ...loginData, [name]: value });
