@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { auth } from "../Firebase/FirebaseConfig";
 import { FirebaseContext } from "../Firebase/FirebaseContext";
 import { toast } from "react-toastify";
@@ -21,7 +21,9 @@ const ModalBox = ({ isOpen, setIsOpen, ques }) => {
 
   return (
     <>
-      {isOpen && ( // Modal tabhi show hoga jab isOpen true hoga
+      {isOpen && (
+        // Modal tabhi show hoga jab isOpen true hoga
+
         <div className="fixed inset-0 flex items-center justify-center z-50 mx-2">
           {/* Background overlay */}
           <div
@@ -29,7 +31,7 @@ const ModalBox = ({ isOpen, setIsOpen, ques }) => {
             onClick={handleOverlayClick}
           ></div>
 
-          {/* Modal content with smooth open/close transition */}
+          {/* Modal content  */}
           <div
             className={`bg-white rounded-lg shadow-lg z-10 w-full max-w-lg p-6 relative transition-transform duration-500 ease-out transform ${
               isOpen ? "opacity-100 scale-100" : "opacity-0 scale-90"
@@ -37,12 +39,7 @@ const ModalBox = ({ isOpen, setIsOpen, ques }) => {
           >
             <div className="mb-4">
               <h6 className="font-semibold text-gray-800 ">{ques}</h6>
-              {/* <button
-                className="text-gray-500 hover:text-gray-800 text-xl"
-                onClick={closeModal} // Close button
-              >
-                <CgClose />
-              </button> */}
+              <hr className="mt-3" />
             </div>
 
             {/* modal body */}
@@ -66,11 +63,11 @@ const ModalBox = ({ isOpen, setIsOpen, ques }) => {
 
                   closeModal(); // Close modal after logout
 
-                  toast.success("User signed in successfully !" );
+                  toast.success("User signed in successfully !");
 
                   contextData.setIsLoggedIn(false);
                 }}
-                className="bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300"
+                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-900 transition duration-300"
               >
                 Logout
               </button>

@@ -1,6 +1,5 @@
 
 issues:
-        signup inputs not working well
         user logged in or not show krna hy achy sy
         protected routing krni hy 
         admin panel banana hy 

@@ -5,7 +5,7 @@
 /* scrollbar  */
 /* width */
 ::-webkit-scrollbar {
-  width: 13px;
+  width: 15px;
 }
 /* Tracker , wo line jis per scrollbar  move kr rha hy */
 ::-webkit-scrollbar-track {
@@ -13,8 +13,9 @@
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #065f3a;
-  border-radius: 15px;
+  background: #15803d;
+  border: 2px #cecece solid;
+  border-radius: 13px;
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {

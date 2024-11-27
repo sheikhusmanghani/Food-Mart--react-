@@ -3,7 +3,6 @@ import error from "../../public/images/error.jpg";
 
 const NotFound = () => {
   const navigate = useNavigate();
-  console.log(navigate);
 
   return (
     <div className="flex flex-col items-center pt-10">

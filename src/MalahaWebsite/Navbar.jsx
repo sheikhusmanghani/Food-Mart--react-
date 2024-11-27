@@ -6,8 +6,7 @@ import { useContext } from "react";
 import { FirebaseContext } from "./Firebase/FirebaseContext";
 
 function Header() {
-  const { isLoggedIn } = useContext(FirebaseContext);
-  console.log("from navbar -->", isLoggedIn);
+  const { isLoggedIn } = useContext(FirebaseContext); 
 
   return (
     <header className="fixed w-full top-0 flex items-center justify-between sm:justify-between  py-3 px-5  bg-gray-100 shadow-md z-20">
@@ -24,18 +23,21 @@ function Header() {
         >
           Home
         </NavLink>
+
         <NavLink
           to="shop"
           className="hover:text-gray-900 transition-colors duration-300 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-br-full rounded-tl-full text-center pb-1 pt-1.5 uppercase w-[110px] text-[15px]"
         >
           Shop
         </NavLink>
+
         <NavLink
           to="contact"
           className="hover:text-gray-900 transition-colors duration-300 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-br-full rounded-tl-full text-center pb-1 pt-1.5 uppercase w-[110px] text-[15px]"
         >
           Contact
         </NavLink>
+
         {!isLoggedIn && (
           <NavLink
             to="form"

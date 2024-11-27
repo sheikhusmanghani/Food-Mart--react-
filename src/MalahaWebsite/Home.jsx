@@ -6,22 +6,24 @@ import apple from "../../public/images/apple.jpeg";
 import banana from "../../public/images/banaa.jpeg";
 import carrot from "../../public/images/carrot.jpeg";
 import milk from "../../public/images/milk.jpeg";
-import { NavLink } from "react-router-dom"; 
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="bg-gray-100 mt-[65px]"> 
+    <div className="bg-gray-100 mt-[65px]">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-green-800 via-green-500 to-green-700  text-white py-16">
         <div className="container mx-auto px-4 text-center text-wrap">
           <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold uppercase">
             Fresh Fruits, Veggies & Essentials
           </h1>
+
           <p className="mt-4 mb-10 text-lg sm:text-xl">
             Delivering fresh and organic products straight to your door.
           </p>
+
           <NavLink
-            to={"/shop/fruits"}
+            to={"/shop"}
             className="  px-6 py-3 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-green-800 hover:text-white transition duration-[400ms]"
           >
             Shop Now
@@ -35,7 +37,9 @@ const Home = () => {
           <h2 className="text-3xl font-bold text-center text-gray-700 mb-10">
             Shop by Category
           </h2>
+
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {/* card 1 */}
             <div className="bg-white shadow-lg rounded-lg overflow-hidden  z-0 sm:hover:scale-[110%] transition duration-500">
               <img
                 src={fruPic}
@@ -49,11 +53,15 @@ const Home = () => {
                 <p className="mt-2 text-gray-600">
                   Delicious and organic fruits sourced from local farms.
                 </p>
-                <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600">
-                  Shop Fruits
-                </button>
+                <NavLink to={"/shop"}>
+                  <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600">
+                    Shop Fruits
+                  </button>
+                </NavLink>
               </div>
             </div>
+
+            {/*  card 2   */}
             <div className="bg-white shadow-lg rounded-lg overflow-hidden z-0 sm:hover:scale-[110%] transition duration-500">
               <img
                 src={vegePic}
@@ -67,11 +75,15 @@ const Home = () => {
                 <p className="mt-2 text-gray-600">
                   Organic and handpicked vegetables for your healthy meals.
                 </p>
-                <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600">
-                  Shop Vegetables
-                </button>
+                <NavLink to={"/shop/veggies"}>
+                  <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600">
+                    Shop Vegetables
+                  </button>
+                </NavLink>
               </div>
             </div>
+
+            {/* card 3 */}
             <div className="bg-white shadow-lg rounded-lg overflow-hidden z-0 sm:hover:scale-[110%] transition duration-500">
               <img
                 src={dairyPic}
@@ -85,9 +97,11 @@ const Home = () => {
                 <p className="mt-2 text-gray-600">
                   Shop essential items for your daily household needs.
                 </p>
-                <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600">
-                  Shop Essentials
-                </button>
+                <NavLink to={"/shop/essentials"}>
+                  <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600">
+                    Shop Essentials
+                  </button>
+                </NavLink>
               </div>
             </div>
           </div>
@@ -100,6 +114,7 @@ const Home = () => {
           <h2 className="text-3xl font-bold text-center text-gray-700 mb-10">
             Featured Products
           </h2>
+
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {/* Product Card 1 */}
             <div className="bg-white shadow-lg rounded-lg overflow-hidden z-0 sm:hover:scale-[110%] transition duration-500">
@@ -118,6 +133,7 @@ const Home = () => {
                 </button>
               </div>
             </div>
+
             {/* Product Card 2 */}
             <div className="bg-white shadow-lg rounded-lg overflow-hidden z-0 sm:hover:scale-[110%] transition duration-500">
               <img
@@ -133,6 +149,7 @@ const Home = () => {
                 </button>
               </div>
             </div>
+
             {/* Product Card 3 */}
             <div className="bg-white shadow-lg rounded-lg overflow-hidden z-0 sm:hover:scale-[110%] transition duration-500">
               <img
@@ -148,6 +165,7 @@ const Home = () => {
                 </button>
               </div>
             </div>
+
             {/* Product Card 4 */}
             <div className="bg-white shadow-lg rounded-lg overflow-hidden z-0 sm:hover:scale-[110%] transition duration-500">
               <img

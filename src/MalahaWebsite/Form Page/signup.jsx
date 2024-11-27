@@ -17,8 +17,8 @@ import { BsFacebook } from "react-icons/bs";
 const Signup = () => {
   const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
-  const facebookProvider = new FacebookAuthProvider();
-  const githubProvider = new GithubAuthProvider();
+  const facebookProvider = new FacebookAuthProvider(); // baad me kaam aay ga
+  const githubProvider = new GithubAuthProvider(); // baad me kaam aay ga
 
   //  signup form data
   const [signupData, setSignupData] = useState({
@@ -39,6 +39,7 @@ const Signup = () => {
       toast.error(error.code.split("/")[1].split("-").join(" "));
     }
   };
+
   //------------------------------------------------ facebook Sign-In Function
   const signInWithFacebook = async () => {
     try {
@@ -51,6 +52,7 @@ const Signup = () => {
       toast.error(error.code.split("/")[1].split("-").join(" "));
     }
   };
+
   //------------------------------------------------ github Sign-In Function
   const signInWithGithub = async () => {
     try {
@@ -66,8 +68,6 @@ const Signup = () => {
       );
     }
   };
-
-  // console.log(`signup chal rha subimt `);
 
   //  --- --------- ----- -----------------------------    Signup Function
   const signupOnSubmit = async (e) => {
@@ -87,14 +87,14 @@ const Signup = () => {
       await setDoc(doc(db, "users", userCredential.user.uid), signupData); // ok
       //
     } catch (e) {
-      toast.error(error.code.split("/")[1].split("-").join(" "));
+      toast.error(e.code.split("/")[1].split("-").join(" "));
     }
   };
 
   // Signup Input Change Handler
   const signuphandler = (e) => {
     const { name, value } = e.target;
-    console.log(`Sign Up data : ${name} ${value}`);
+    // console.log(`Sign Up data : ${name} ${value}`);
     // Update form
     setSignupData((prev) => ({ ...prev, [name]: value }));
   };

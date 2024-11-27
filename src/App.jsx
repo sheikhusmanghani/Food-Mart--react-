@@ -13,6 +13,7 @@ import BothForms from "./MalahaWebsite/Form Page/bothForms";
 import { FirebaseProvider } from "./MalahaWebsite/Firebase/FirebaseContext";
 import Dashboard from "./MalahaWebsite/Dashboard";
 import CartProvider from "./MalahaWebsite/Contexts/CartContext";
+import UserProfile from "./MalahaWebsite/UserProfile";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -62,6 +63,10 @@ const App = () => {
         {
           path: "/dashboard",
           element: <Dashboard />,
+        },
+        {
+          path: "/profile",
+          element: <UserProfile />,
         },
       ],
     },

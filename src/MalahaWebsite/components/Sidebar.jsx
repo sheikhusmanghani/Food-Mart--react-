@@ -17,9 +17,10 @@ import { HiMenu } from "react-icons/hi";
 import { CgMenu } from "react-icons/cg";
 import { LiaUnlockAltSolid } from "react-icons/lia";
 import { signOut } from "firebase/auth";
-import { auth } from "../Firebase/FirebaseConfig"; 
+import { auth } from "../Firebase/FirebaseConfig";
 import { FirebaseContext } from "../Firebase/FirebaseContext";
 import { ModalBox } from "../common Components/ModelBox";
+import UserChecker from "../common Components/UserChecker";
 
 export default function Sidebar() {
   //
@@ -42,11 +43,12 @@ export default function Sidebar() {
       {/* Menu Icon */}
       <div className="flex pt-2">
         {/* user hy ya nhi , maloom krna  */}
-        {isLoggedIn ? (
+        {/* {isLoggedIn ? (
           <p className="text-xl mr-3 uppercase">Logged in</p>
         ) : (
           <p className="text-xl mr-3">NO USER</p>
-        )}
+        )} */}
+        <UserChecker />
 
         <button
           onClick={toggleSidebar}
@@ -89,7 +91,7 @@ export default function Sidebar() {
             </li>
             <li>
               <NavLink
-                to={"/contact"}
+                to={"contact"}
                 className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg"
               >
                 <MdOutlineFeedback className="h-5 w-5 text-gray-500" />
@@ -99,21 +101,28 @@ export default function Sidebar() {
 
             {!isLoggedIn == false && (
               <li>
-                <Link className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <NavLink
+                  to={"profile"}
+                  className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg"
+                >
                   <UserCircleIcon className="h-5 w-5 text-gray-500" />
                   <span className="ml-3">Profile</span>
-                </Link>
+                </NavLink>
               </li>
             )}
 
             {!isLoggedIn == false && (
               <li>
-                <div className="flex items-center p-2 text-base font-medium cursor-pointer text-gray-700 hover:bg-gray-100 rounded-lg">
+                <NavLink
+                  to={"dashboard"}
+                  className="flex items-center p-2 text-base font-medium cursor-pointer text-gray-700 hover:bg-gray-100 rounded-lg"
+                >
                   <MdOutlineDashboardCustomize className="h-5 w-5 text-gray-500" />
                   <span className="ml-3">Dashboard</span>
-                </div>
+                </NavLink>
               </li>
             )}
+
             <li>
               <NavLink
                 to={"/form"}
@@ -125,12 +134,10 @@ export default function Sidebar() {
             </li>
 
             {!isLoggedIn == false && (
-              <li>
+              <li onClick={openModal}>
                 <div className="flex items-center p-2 text-base font-medium cursor-pointer text-gray-700 hover:bg-gray-100 rounded-lg">
                   <PowerIcon className="h-5 w-5 text-gray-500" />
-                  <span className="ml-3" onClick={openModal}>
-                    Log Out
-                  </span>
+                  <span className="ml-3">Log Out</span>
                 </div>
               </li>
             )}
