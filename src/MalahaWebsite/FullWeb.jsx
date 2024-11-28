@@ -1,9 +1,7 @@
-import {
-  Outlet,
-} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "./is-ki.css";
 import Header from "./Navbar";
-import Footer from "./Footer"; 
+import Footer from "./Footer";
 
 const FullWeb = () => {
   return (

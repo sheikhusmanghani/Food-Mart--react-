@@ -10,6 +10,7 @@ const Veggies = () => {
 
         return (
           <ProductCard
+            id={id}
             key={id}
             image={imgSrc}
             title={title}
