@@ -1,18 +1,25 @@
 import { useContext } from "react";
 import { FirebaseContext } from "../Firebase/FirebaseContext";
+import { CartContext } from "../Contexts/CartContext";
 
 const UserChecker = () => {
   const { isLoggedIn, currentUserDetails } = useContext(FirebaseContext);
-  //   console.log(currentUserDetails); //ok
+  const {cartitems } = useContext(CartContext);
+  // console.log(cartitems.length); //ok
 
-  const username =
-    currentUserDetails.username?.[0] + currentUserDetails.username?.[1];
+  let username;
+  if (currentUserDetails) {
+   username = currentUserDetails.username?.[0] + currentUserDetails.username?.[1];
+  }else{
+    username = "...";
+  } 
 
   return isLoggedIn ? (
-    <div>
-      <p className="bg-[#17a84c] text-white font-bold text-xl rounded-full py-1 px-2 m-0 mr-2">
-        {username || "..."}
+    <div className="relative">
+      <p className="bg-[#17a84c] text-white uppercase font-bold text-xl rounded-full py-1 ml-1 px-2 ">
+        {username}
       </p>
+      <span className="cart-badge bg-[#17a84c] px-1">{cartitems.length}</span>
     </div>
   ) : null;
 };

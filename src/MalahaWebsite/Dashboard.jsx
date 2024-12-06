@@ -12,7 +12,7 @@ const Dashboard = () => {
     return <Navigate to="/form" />;
   }
 
-  // Fallback to an empty array if cartitems is undefined or null
+  // if cartitems is undefined or null...
   const items = cartitems || [];
 
   // Calculate total price
@@ -23,10 +23,10 @@ const Dashboard = () => {
 
   return (
     <div className="mt-20 px-6 md:px-[150px] h-[80vh] flex flex-col">
-      <h1 className="text-3xl font-medium text-center mb-6">Dashboard</h1>
+      {/* <h1 className="text-3xl font-medium text-center mb-6">Dashboard</h1> */}
 
       {/* Cart Items Section */}
-      <div className="bg-white p-6 rounded shadow-lg overflow-y-auto flex-1">
+      <div className="bg-white p-4 rounded text-center shadow-lg overflow-y-auto flex-1">
         <h2 className="text-xl font-bold mb-4">Cart Items</h2>
         {items.length > 0 ? (
           <ul className="space-y-4">
@@ -54,7 +54,7 @@ const Dashboard = () => {
           </ul>
         ) : (
           <p className="text-gray-500 text-center py-10">
-            No items in the cart.
+            No item in the cart.
           </p>
         )}
       </div>

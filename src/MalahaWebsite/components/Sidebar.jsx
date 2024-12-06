@@ -43,11 +43,6 @@ export default function Sidebar() {
       {/* Menu Icon */}
       <div className="flex pt-2">
         {/* user hy ya nhi , maloom krna  */}
-        {/* {isLoggedIn ? (
-          <p className="text-xl mr-3 uppercase">Logged in</p>
-        ) : (
-          <p className="text-xl mr-3">NO USER</p>
-        )} */}
         <UserChecker />
 
         <button

@@ -25,12 +25,15 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     const savedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
     setCartItems(savedCartItems);
+    // console.log(savedCartItems.length)
   }, []);
 
-  // Save cart items to localStorage whenever cartitems changes
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartitems));
-  }, [cartitems]);
+  // isme masla hy k jb refresh hrha h to cart items empty hyn
+  // 
+  // Save cart items in localStorage jb bhi cartitems change hoga
+  // useEffect(() => {
+  //   localStorage.setItem("cartItems", JSON.stringify(cartitems));
+  // }, [cartitems]);
 
   return (
     <CartContext.Provider value={{ cartitems, setCartItems }}>

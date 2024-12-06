@@ -16,3 +16,17 @@ ul li :hover {
   background: linear-gradient(to right, #15803d, #20b858, #15803d);
   color: white;
 } 
+
+/*--------------  cart badge k liye ---------------- */ 
+
+.cart-badge {
+  position: absolute;
+  top: -12px;
+  left: -13px; 
+  border: white solid 3px;
+  color: white;
+  font-size: 15px;
+  border-radius: 50%; 
+  min-width: 25px;
+}
+
