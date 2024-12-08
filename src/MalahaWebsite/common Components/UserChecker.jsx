@@ -7,6 +7,7 @@ const UserChecker = () => {
   const {cartitems } = useContext(CartContext);
   // console.log(cartitems.length); //ok
 
+  let itemsCount = cartitems.length;
   let username;
   if (currentUserDetails) {
    username = currentUserDetails.username?.[0] + currentUserDetails.username?.[1];
@@ -19,7 +20,7 @@ const UserChecker = () => {
       <p className="bg-[#17a84c] text-white uppercase font-bold text-xl rounded-full py-1 ml-1 px-2 ">
         {username}
       </p>
-      <span className="cart-badge bg-[#17a84c] px-1">{cartitems.length}</span>
+      <span className="cart-badge bg-[#17a84c] px-1">{itemsCount}</span>
     </div>
   ) : null;
 };

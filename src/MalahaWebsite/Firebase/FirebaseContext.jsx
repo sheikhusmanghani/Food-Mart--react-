@@ -15,11 +15,13 @@ export const FirebaseProvider = ({ children }) => {
       if (user) {
         console.log("auth--> ", "Login hy");
         setIsLoggedIn(true);
+
         (async () => {
           const docRef = doc(db, "users", user.uid);
           const docSnap = await getDoc(docRef);
           setCurrentUserDetails(docSnap.data());
         })();
+
         //
       } else {
         setIsLoggedIn(false);
