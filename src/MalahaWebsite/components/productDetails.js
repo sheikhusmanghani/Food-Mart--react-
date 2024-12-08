@@ -1,7 +1,7 @@
 //   fruits
 import Apple from "../../../public/images/apple.jpeg";
 import Banana from "../../../public/images/banaa.jpeg";
-import kiwi from "../../../public/images/kiwi.jpeg";
+import kiwi from "../../../public/images/Kiwi.jpeg";
 import mango from "../../../public/images/mango.jpg";
 import Strawberry from "../../../public/images/Strawberry.jpeg";
 import watermelon from "../../../public/images/watermelon.jpg";
