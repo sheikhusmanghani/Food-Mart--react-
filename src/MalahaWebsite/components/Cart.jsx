@@ -3,6 +3,7 @@ import { FaCartPlus } from "react-icons/fa6";
 import { CartContext } from "../Contexts/CartContext";
 import { FirebaseContext } from "../Firebase/FirebaseContext";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ image, title, price, weight, id }) => {
   const { cartitems, setCartItems } = useContext(CartContext);
@@ -31,7 +32,14 @@ const ProductCard = ({ image, title, price, weight, id }) => {
         toast.success("Item added to cart!");
       }
     } else {
-      toast.error("Please Login First");
+      toast.error(
+        <>
+          Please Login First ! <br />
+          <a href="/form" style={{ color: "red", textDecoration: "underline" }}>
+            Go to Forms
+          </a>
+        </>
+      );
     }
   }
 
