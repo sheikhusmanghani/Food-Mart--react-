@@ -4,16 +4,11 @@ import { CartContext } from "../Contexts/CartContext";
 
 const UserChecker = () => {
   const { isLoggedIn, currentUserDetails } = useContext(FirebaseContext);
-  const {cartitems } = useContext(CartContext);
-  // console.log(cartitems.length); //ok
+  const { cartitems } = useContext(CartContext);
+  console.log(currentUserDetails.username); //ok
 
   let itemsCount = cartitems.length;
-  let username;
-  if (currentUserDetails) {
-   username = currentUserDetails.username?.[0] + currentUserDetails.username?.[1];
-  }else{
-    username = "...";
-  } 
+  let username = currentUserDetails.username?.[0] || "...";
 
   return isLoggedIn ? (
     <div className="relative">

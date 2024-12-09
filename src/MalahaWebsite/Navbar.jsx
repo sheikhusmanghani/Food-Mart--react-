@@ -6,12 +6,15 @@ import { useContext } from "react";
 import { FirebaseContext } from "./Firebase/FirebaseContext";
 
 function Header() {
-  const { isLoggedIn } = useContext(FirebaseContext); 
+  const { isLoggedIn } = useContext(FirebaseContext);
 
   return (
     <header className="fixed w-full top-0 flex items-center justify-between sm:justify-between  py-3 px-5  bg-gray-100 shadow-md z-20">
       {/* Logo / Title */}
-      <NavLink className="flex items-center h-10 px-10 transition-colors duration-500 bg-gradient-to-r from-green-800 via-green-500 to-green-700 rounded-tl-full rounded-br-full font-bold text-2xl uppercase italic text-white hover:text-gray-900 ">
+      <NavLink
+        className="flex items-center h-10 px-10 transition-colors duration-500 bg-gradient-to-r from-green-800 via-green-500 to-green-700 rounded-tl-full rounded-br-full font-bold text-2xl uppercase italic text-white hover:text-gray-900 "
+        style={{ whiteSpace: "nowrap" }}
+      >
         Food Mart
       </NavLink>
 

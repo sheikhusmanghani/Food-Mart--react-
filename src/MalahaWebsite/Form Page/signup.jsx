@@ -56,10 +56,10 @@ const Signup = () => {
   //------------------------------------------------ github Sign-In Function
   const signInWithGithub = async () => {
     try {
-      toast.warning("please sign in with google");
-      // await signInWithPopup(auth, githubProvider);;// not working
-
-      // toast.success("User signed in successfully !" );
+      // toast.warning("please sign in with google");
+      const result = await signInWithPopup(auth, githubProvider); // not working
+      const user = result.user;
+      toast.success("User signed in successfully !");
 
       // navigate("/shop");
     } catch (error) {
