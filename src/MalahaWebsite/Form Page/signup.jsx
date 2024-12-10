@@ -30,11 +30,17 @@ const Signup = () => {
   //------------------------------------------------ Google Sign-In Function
   const signInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
 
       toast.success("User signed in successfully !");
+      navigate("/shop"); // redirect to shop
 
-      navigate("/shop");
+      await setDoc(doc(db, "users", user.uid), {
+        username: user.displayName,
+        email: user.email,
+      });
+      //
     } catch (error) {
       toast.error(error.code.split("/")[1].split("-").join(" "));
     }
@@ -43,11 +49,9 @@ const Signup = () => {
   //------------------------------------------------ facebook Sign-In Function
   const signInWithFacebook = async () => {
     try {
-      // await signInWithPopup(auth, facebookProvider);// not working
-      toast.warning("please sign in with google");
-      // toast.success("User signed in successfully !");
-
-      // navigate("/shop");
+      await signInWithPopup(auth, facebookProvider);
+      toast.success("User signed in successfully !");
+      navigate("/shop");
     } catch (error) {
       toast.error(error.code.split("/")[1].split("-").join(" "));
     }
@@ -56,12 +60,15 @@ const Signup = () => {
   //------------------------------------------------ github Sign-In Function
   const signInWithGithub = async () => {
     try {
-      // toast.warning("please sign in with google");
-      const result = await signInWithPopup(auth, githubProvider); // not working
+      const result = await signInWithPopup(auth, githubProvider);
       const user = result.user;
       toast.success("User signed in successfully !");
+      navigate("/shop");
 
-      // navigate("/shop");
+      await setDoc(doc(db, "users", user.uid), {
+        username: user.displayName,
+        email: user.email,
+      });
     } catch (error) {
       toast.error(
         error.code.split("/")[1].split("-").join(" ") || "Sign-in failed!"
@@ -69,7 +76,7 @@ const Signup = () => {
     }
   };
 
-  //  --- --------- ----- -----------------------------    Signup Function
+  //  --- --------- ----- -----------------------------   MY Signup Function
   const signupOnSubmit = async (e) => {
     e.preventDefault();
     try {

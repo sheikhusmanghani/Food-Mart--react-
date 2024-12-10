@@ -1,9 +1,7 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import "../../index.css";
 import {
-  PresentationChartBarIcon,
   UserCircleIcon,
-  Cog6ToothIcon,
   PowerIcon,
   HomeIcon,
 } from "@heroicons/react/24/outline";
@@ -16,8 +14,6 @@ import {
 import { HiMenu } from "react-icons/hi";
 import { CgMenu } from "react-icons/cg";
 import { LiaUnlockAltSolid } from "react-icons/lia";
-import { signOut } from "firebase/auth";
-import { auth } from "../Firebase/FirebaseConfig";
 import { FirebaseContext } from "../Firebase/FirebaseContext";
 import { ModalBox } from "../common Components/ModelBox";
 import UserChecker from "../common Components/UserChecker";
@@ -117,16 +113,17 @@ export default function Sidebar() {
                 </NavLink>
               </li>
             )}
-
-            <li>
-              <NavLink
-                to={"/form"}
-                className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg"
-              >
-                <LiaUnlockAltSolid className="h-5 w-5 text-gray-500" />
-                <span className="ml-3">Sign In</span>
-              </NavLink>
-            </li>
+            {isLoggedIn == false && (
+              <li>
+                <NavLink
+                  to={"/form"}
+                  className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg"
+                >
+                  <LiaUnlockAltSolid className="h-5 w-5 text-gray-500" />
+                  <span className="ml-3">Sign In</span>
+                </NavLink>
+              </li>
+            )}
 
             {!isLoggedIn == false && (
               <li onClick={openModal}>

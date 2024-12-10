@@ -14,6 +14,7 @@ import { FirebaseProvider } from "./MalahaWebsite/Firebase/FirebaseContext";
 import Dashboard from "./MalahaWebsite/Dashboard";
 import { CartProvider } from "./MalahaWebsite/Contexts/CartContext";
 import UserProfile from "./MalahaWebsite/UserProfile";
+import DataDeletation from "./Data-delete";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -67,6 +68,10 @@ const App = () => {
         {
           path: "/profile",
           element: <UserProfile />,
+        },
+        {
+          path: "/support",
+          element: <DataDeletation />,
         },
       ],
     },
