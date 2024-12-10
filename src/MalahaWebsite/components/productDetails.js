@@ -22,8 +22,6 @@ import towels from "../../../public/images/towels.jpeg";
 import bottles from "../../../public/images/bottles.webp";
 import basket from "../../../public/images/basket.jpeg";
 import suitcase from "../../../public/images/suitcase.jpg";
-
-// this is fruitsData
 const fruitsData = [
   {
     id: 1,
@@ -31,6 +29,7 @@ const fruitsData = [
     price: 2.99,
     weight: "(1 Kg)",
     imgSrc: Apple,
+    count: 1,
   },
   {
     id: 2,
@@ -38,6 +37,7 @@ const fruitsData = [
     price: 1.29,
     weight: "(1 Dozen)",
     imgSrc: Banana,
+    count: 1,
   },
   {
     id: 3,
@@ -45,13 +45,15 @@ const fruitsData = [
     price: 0.89,
     weight: "(1 Kg)",
     imgSrc: kiwi,
+    count: 1,
   },
   {
     id: 4,
     title: "watermelon",
     price: 1.99,
-    weight: "(1 Peice)",
+    weight: "(1 Piece)",
     imgSrc: watermelon,
+    count: 1,
   },
   {
     id: 5,
@@ -59,6 +61,7 @@ const fruitsData = [
     price: 3.49,
     weight: "(1 Box)",
     imgSrc: Strawberry,
+    count: 1,
   },
   {
     id: 6,
@@ -66,6 +69,7 @@ const fruitsData = [
     price: 2.49,
     weight: "(1 Kg)",
     imgSrc: mango,
+    count: 1,
   },
   {
     id: 7,
@@ -73,6 +77,7 @@ const fruitsData = [
     price: 6.99,
     weight: "(5 Kg)",
     imgSrc: FruitBasket,
+    count: 1,
   },
 ];
 
@@ -83,6 +88,7 @@ const veggiesData = [
     price: 0.89,
     weight: "(1 Kg)",
     imgSrc: Carrot,
+    count: 1,
   },
   {
     id: 9,
@@ -90,6 +96,7 @@ const veggiesData = [
     price: 1.29,
     weight: "(1 Kg)",
     imgSrc: onion,
+    count: 1,
   },
   {
     id: 10,
@@ -97,6 +104,7 @@ const veggiesData = [
     price: 0.99,
     weight: "(1 Piece)",
     imgSrc: Broccoli,
+    count: 1,
   },
   {
     id: 11,
@@ -104,6 +112,7 @@ const veggiesData = [
     price: 1.49,
     weight: "(1 Pack)",
     imgSrc: Shimla,
+    count: 1,
   },
   {
     id: 12,
@@ -111,6 +120,7 @@ const veggiesData = [
     price: 0.69,
     weight: "(1 Kg)",
     imgSrc: potato,
+    count: 1,
   },
   {
     id: 13,
@@ -118,6 +128,7 @@ const veggiesData = [
     price: 1.99,
     weight: "(1 Kg)",
     imgSrc: Tomato,
+    count: 1,
   },
   {
     id: 14,
@@ -125,6 +136,7 @@ const veggiesData = [
     price: 0.99,
     weight: "(1 Piece)",
     imgSrc: cauliflower,
+    count: 1,
   },
 ];
 
@@ -135,6 +147,7 @@ const essentialsData = [
     price: 3.89,
     weight: "(3 bottles)",
     imgSrc: bottles,
+    count: 1,
   },
   {
     id: 16,
@@ -142,6 +155,7 @@ const essentialsData = [
     price: 1.29,
     weight: "(1 Piece)",
     imgSrc: basket,
+    count: 1,
   },
   {
     id: 17,
@@ -149,13 +163,15 @@ const essentialsData = [
     price: 0.99,
     weight: "(1 Pack)",
     imgSrc: harpic,
+    count: 1,
   },
   {
     id: 18,
     title: "Towels",
     price: 1.49,
-    weight: "(1 Piecs)",
+    weight: "(1 Piece)",
     imgSrc: towels,
+    count: 1,
   },
   {
     id: 19,
@@ -163,6 +179,7 @@ const essentialsData = [
     price: 0.69,
     weight: "(1 Set)",
     imgSrc: plates,
+    count: 1,
   },
   {
     id: 20,
@@ -170,6 +187,7 @@ const essentialsData = [
     price: 1.99,
     weight: "(1 Pack)",
     imgSrc: soaps,
+    count: 1,
   },
   {
     id: 21,
@@ -177,6 +195,7 @@ const essentialsData = [
     price: 9.99,
     weight: "(1 Piece)",
     imgSrc: suitcase,
+    count: 1,
   },
 ];
 

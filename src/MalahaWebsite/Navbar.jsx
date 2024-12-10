@@ -52,9 +52,9 @@ function Header() {
         {isLoggedIn && (
           <NavLink
             to="dashboard"
-            className="relative hover:text-gray-900 transition-colors duration-300 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-br-full rounded-tl-full text-center pb-1 pt-1.5 uppercase w-[130px] text-[15px]"
+            className="relative hover:text-gray-900 transition-colors duration-300 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-br-full rounded-tl-full text-center pb-1 pt-1.5 uppercase w-[110px] text-[15px]"
           >
-            Dashboard
+            Carts
           </NavLink>
         )}
       </nav>

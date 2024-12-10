@@ -109,7 +109,7 @@ export default function Sidebar() {
                   className="flex items-center p-2 text-base font-medium cursor-pointer text-gray-700 hover:bg-gray-100 rounded-lg"
                 >
                   <MdOutlineDashboardCustomize className="h-5 w-5 text-gray-500" />
-                  <span className="ml-3">Dashboard</span>
+                  <span className="ml-3">Carts</span>
                 </NavLink>
               </li>
             )}
