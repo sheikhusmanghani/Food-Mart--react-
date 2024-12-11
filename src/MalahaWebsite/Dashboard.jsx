@@ -37,6 +37,28 @@ const Dashboard = () => {
     setCartItems([]);
   };
 
+  // handle item increment
+  const handleIncrement = (id) => {
+    const updatedCartItems = items.map((item) => {
+      if (item.id === id) {
+        return { ...item, count: (item.count || 0) + 1 }; // Increment count
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
+  };
+
+  // handle item decrement
+  const handleDecrement = (id) => {
+    const updatedCartItems = items.map((item) => {
+      if (item.id === id && item.count > 0) {
+        return { ...item, count: item.count - 1 }; // Decrement count
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
+  };
+
   return (
     <div className="mt-20 px-6 md:px-[150px] h-[80vh] flex flex-col">
       {/* Cart Items Section */}
@@ -66,18 +88,17 @@ const Dashboard = () => {
                     </div>
 
                     {/* count down */}
-                    <div>
+                    <div className="flex items-center gap-2 mt-1">
                       <button
-                        className="bg-gray-200 py-1 px-2 rounded text-sm font-bold hover:bg-gray-400"
-                        // onClick={() => handleDecrement(item.id)}
+                        className="bg-gray-200 w-7 h-7 rounded-lg text-md font-bold hover:bg-gray-400"
+                        onClick={() => handleDecrement(item.id)}
                       >
                         -
                       </button>
-                      {/* <span className="text-lg">{item.count}</span> */}
-                      <span className="text-lg mx-2">pr</span>
+                      <span className="text-lg">{item.count || 0}</span>
                       <button
-                        className="bg-gray-200 py-1 px-2 rounded text-sm font-bold hover:bg-gray-400"
-                        // onClick={() => handleIncrement(item.id)}
+                        className="bg-gray-200 w-7 h-7 rounded-lg text-md font-bold hover:bg-gray-400"
+                        onClick={() => handleIncrement(item.id)}
                       >
                         +
                       </button>

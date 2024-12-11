@@ -29,7 +29,7 @@ const ProductCard = ({ image, title, price, weight, id }) => {
         setCartItems(currentCartItems);
         localStorage.setItem("cartItems", JSON.stringify(currentCartItems));
 
-        toast.success("Item added to cart!");
+        toast.success("Item Added To Cart !");
       }
     } else {
       toast.error(
