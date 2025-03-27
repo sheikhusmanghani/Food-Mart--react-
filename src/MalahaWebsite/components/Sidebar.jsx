@@ -15,7 +15,7 @@ import { HiMenu } from "react-icons/hi";
 import { CgMenu } from "react-icons/cg";
 import { LiaUnlockAltSolid } from "react-icons/lia";
 import { FirebaseContext } from "../Firebase/FirebaseContext";
-import { ModalBox } from "../common Components/ModelBox";
+import { ModalBox } from "../common Components/LogoutPopup";
 import UserChecker from "../common Components/UserChecker";
 
 export default function Sidebar() {
@@ -82,7 +82,7 @@ export default function Sidebar() {
             </li>
             <li>
               <NavLink
-                to={"contact"}
+                to={"/contact"}
                 className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg"
               >
                 <MdOutlineFeedback className="h-5 w-5 text-gray-500" />
@@ -93,11 +93,11 @@ export default function Sidebar() {
             {!isLoggedIn == false && (
               <li>
                 <NavLink
-                  to={"profile"}
+                  to={"/admin"}
                   className="flex items-center p-2 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-lg"
                 >
                   <UserCircleIcon className="h-5 w-5 text-gray-500" />
-                  <span className="ml-3">Profile</span>
+                  <span className="ml-3">AdminPanel</span>
                 </NavLink>
               </li>
             )}
@@ -105,7 +105,7 @@ export default function Sidebar() {
             {!isLoggedIn == false && (
               <li>
                 <NavLink
-                  to={"dashboard"}
+                  to={"/carts"}
                   className="flex items-center p-2 text-base font-medium cursor-pointer text-gray-700 hover:bg-gray-100 rounded-lg"
                 >
                   <MdOutlineDashboardCustomize className="h-5 w-5 text-gray-500" />

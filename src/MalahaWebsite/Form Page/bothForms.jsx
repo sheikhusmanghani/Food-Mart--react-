@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Signup from "./signup";
 import Login from "./login";
+import { FirebaseContext } from "../Firebase/FirebaseContext";
+import { Navigate } from "react-router-dom";
 
 const BothForms = () => {
   const [tab, setTab] = useState("signup"); // for changing form
+  const { isLoggedIn } = useContext(FirebaseContext);
+
+  if (isLoggedIn) return <Navigate to="/home" />; // if user logged in, throw it
 
   return (
     <div className=" bg-gray-100 pt-[100px] pb-10 flex items-center justify-center">

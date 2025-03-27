@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Shop from "./MalahaWebsite/Shop";
-import ShopTwo from "./MalahaWebsite/components/Shop";
+import ShopTwo from "./MalahaWebsite/components/ShopNavigation";
 import Contact from "./MalahaWebsite/Contact";
 import FullWeb from "./MalahaWebsite/FullWeb";
 import Home from "./MalahaWebsite/Home";
@@ -13,7 +13,7 @@ import BothForms from "./MalahaWebsite/Form Page/bothForms";
 import { FirebaseProvider } from "./MalahaWebsite/Firebase/FirebaseContext";
 import Dashboard from "./MalahaWebsite/Dashboard";
 import { CartProvider } from "./MalahaWebsite/Contexts/CartContext";
-import UserProfile from "./MalahaWebsite/UserProfile";
+import AdminPanel from "./MalahaWebsite/adminPanel";
 import DataDeletation from "./Data-delete";
 
 const App = () => {
@@ -62,12 +62,12 @@ const App = () => {
           element: <BothForms />,
         },
         {
-          path: "/dashboard",
+          path: "/carts",
           element: <Dashboard />,
         },
         {
-          path: "/profile",
-          element: <UserProfile />,
+          path: "/admin",
+          element: <AdminPanel />,
         },
         {
           path: "/support",

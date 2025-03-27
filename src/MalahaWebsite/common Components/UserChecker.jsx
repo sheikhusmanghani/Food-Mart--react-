@@ -5,7 +5,7 @@ import { CartContext } from "../Contexts/CartContext";
 const UserChecker = () => {
   const { isLoggedIn, currentUserDetails } = useContext(FirebaseContext);
   const { cartitems } = useContext(CartContext);
-  console.log(currentUserDetails.username); //ok
+  // console.log(currentUserDetails.username); //ok
 
   let itemsCount = cartitems.length;
   let username = currentUserDetails.username?.[0] || "...";
