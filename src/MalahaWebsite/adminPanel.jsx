@@ -45,10 +45,12 @@ const AdminPanel = () => {
       const imageUrl = await handleFile(file);
 
       const formValues = {
+        _id: Date.now().toString().slice(0, 10),
         name: formData.get("name"),
         price: formData.get("price"),
         quantity: formData.get("quantity"),
         unit: formData.get("unit"),
+        category: formData.get("category"),
         image: imageUrl,
       };
 
@@ -58,6 +60,7 @@ const AdminPanel = () => {
       setIsLoading(false);
       toast.success("This product has been saved.");
       e.target.reset();
+      setFileName("Upload Image");
     } catch (error) {
       console.error("Error uploading image:", error);
     }
@@ -67,22 +70,22 @@ const AdminPanel = () => {
     <>
       <div className="flex flex-col items-center mt-20 mb-4 w-screen">
         <form
-          className="flex flex-col min-w-56 md:w-1/3 p-4 mainColor rounded-lg"
+          className="flex flex-col min-w-56 md:w-1/3 p-5 mainColor rounded-lg"
           onSubmit={handleSubmit}
         >
           <h1 className="text-2xl font-bold py-1 uppercase text-center ">
             Add Your Product
           </h1>
-          <hr className="mb-4" />
+          {/* <hr className="mb-4" /> */}
 
-          <label htmlFor="productName">Product Name :</label>
+          <label htmlFor="productName"> Name : </label>
           <input
             type="text"
             id="productName"
             name="name"
             placeholder="Apple, Mango, ext..."
             required
-            className="w-full px-2 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
           />
 
           <label htmlFor="price" className="mt-3">
@@ -94,7 +97,7 @@ const AdminPanel = () => {
             name="price"
             placeholder="1000, 2000, 3000..."
             required
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
           />
 
           <label htmlFor="quantity" className="mt-3">
@@ -106,7 +109,7 @@ const AdminPanel = () => {
             name="quantity"
             placeholder="1 , 6 , 12..."
             required
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
           />
 
           <label htmlFor="unit" className="mt-3">
@@ -118,34 +121,42 @@ const AdminPanel = () => {
             name="unit"
             placeholder="Kg, Dozen, Pieces..."
             required
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
           />
 
-          <select className="text-gray-600 mt-3 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 ">
+          <label htmlFor="category" className="mt-3">
+            Category :
+          </label>
+          <select
+            id="category"
+            required
+            name="category"
+            className="text-gray-600 mt-0.5 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 "
+          >
+            <option disabled>-- Select any Catogory --</option>
             <option value="fruits">Fruits</option>
-            <option value="vegitables">Vegitables</option>
+            <option value="Veggies">Veggies</option>
             <option value="essentials">Esentials</option>
-            <option value="">Select any Catogory</option>
           </select>
 
           <label
             htmlFor="image"
-            className="my-3 flex justify-center items-center gap-2"
+            className="my-3 flex justify-center items-center gap-2 text-[18px]"
           >
             {fileName}
             <FaCloudUploadAlt className="w-8 h-5" />
-            <input
-              type="file"
-              id="image"
-              name="image"
-              // required
-              // className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
-              onChange={(e) => {
-                setFileName(e.target.files[0].name);
-              }}
-              className="hidden"
-            />
           </label>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            required
+            // className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
+            onChange={(e) => {
+              setFileName(e.target.files[0].name);
+            }}
+            className="hidden"
+          />
           {isLoading ? (
             <div className="flex gap-2 justify-center my-3">
               {/* loading.... */}

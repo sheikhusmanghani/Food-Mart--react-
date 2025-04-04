@@ -7,7 +7,7 @@ const FullWeb = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <Outlet /> {/* This is where the child routes will be rendered */}
       <Footer />
     </>
   );

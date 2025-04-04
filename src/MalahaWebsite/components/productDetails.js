@@ -1,27 +1,28 @@
 //   fruits
-import Apple from "../../../public/images/apple.jpeg";
-import Banana from "../../../public/images/banaa.jpeg";
-import kiwi from "../../../public/images/Kiwi.jpeg";
-import mango from "../../../public/images/mango.jpg";
-import Strawberry from "../../../public/images/Strawberry.jpeg";
-import watermelon from "../../../public/images/watermelon.jpg";
-import FruitBasket from "../../../public/images/fresh-fruits.jpg";
+import Apple from "/images/apple.jpeg";
+import Banana from "/images/banaa.jpeg";
+import kiwi from "/images/Kiwi.jpeg";
+import mango from "/images/mango.jpg";
+import Strawberry from "/images/Strawberry.jpeg";
+import watermelon from "/images/watermelon.jpg";
+import FruitBasket from "/images/fresh-fruits.jpg";
 // veggies
-import Carrot from "../../../public/images/carrot.jpeg";
-import onion from "../../../public/images/Onion.webp";
-import Tomato from "../../../public/images/tomato.jpeg";
-import potato from "../../../public/images/potato.jpeg";
-import cauliflower from "../../../public/images/cauliflower.jpg";
-import Broccoli from "../../../public/images/Broccoli.jpeg";
-import Shimla from "../../../public/images/shimla-mirch.webp";
+import Carrot from "/images/carrot.jpeg";
+import onion from "/images/Onion.webp";
+import Tomato from "/images/tomato.jpeg";
+import potato from "/images/potato.jpeg";
+import cauliflower from "/images/cauliflower.jpg";
+import Broccoli from "/images/Broccoli.jpeg";
+import Shimla from "/images/shimla-mirch.webp";
 // essentials
-import harpic from "../../../public/images/harpic-bottles.jpg";
-import plates from "../../../public/images/plates.jpeg";
-import soaps from "../../../public/images/soaps.jpeg";
-import towels from "../../../public/images/towels.jpeg";
-import bottles from "../../../public/images/bottles.webp";
-import basket from "../../../public/images/basket.jpeg";
-import suitcase from "../../../public/images/suitcase.jpg";
+import harpic from "/images/harpic-bottles.jpg";
+import plates from "/images/plates.jpeg";
+import soaps from "/images/soaps.jpeg";
+import towels from "/images/towels.jpeg";
+import bottles from "/images/bottles.webp";
+import basket from "/images/basket.jpeg";
+import suitcase from "/images/suitcase.jpg";
+
 const fruitsData = [
   {
     id: 1,
