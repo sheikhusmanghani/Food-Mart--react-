@@ -2,32 +2,31 @@ import {
   FaDribbbleSquare,
   FaFacebookSquare,
   FaGithubSquare,
-  FaInstagram,
   FaTwitterSquare,
 } from "react-icons/fa";
+import { FaSquareInstagram } from "react-icons/fa6";
 
 const Footer = () => {
   return (
     <div className=" mx-auto py-5 px-1 grid gap-8 text-gray-600 bg-slate-100 min-h-[170px] border  border-gray-300    ">
-      {/* Left Section */}
+      {/* Left Section    & Right Section is'nt ready  */}
       <div className="lg:col-span-1">
         <h1 className="w-full text-3xl text-center font-bold text-gray-700  ">
-          FOOD MART LIMITED COMPANY
+          FOOD MART LTD COMPANY
         </h1>
-        <p className="py-2 text-center">
-          We Are Going To Build A Pieceful Invirement. If You Want To Join Us,
-          So Reach Us On These Platform.
+        <p className="p-2 text-center">
+          "Fresh, quality ingredients at unbeatable prices! Shop with us for all
+          your grocery needs. Fast delivery & friendly service. © FoodMart"
         </p>
         <div className="flex justify-around  mt-6">
           <FaFacebookSquare size={30} className="icon" />
-          <FaInstagram size={30} className="icon" />
+          <FaSquareInstagram size={30} className="icon" />
           <FaTwitterSquare size={30} className="icon" />
           <FaGithubSquare size={30} className="icon" />
           <FaDribbbleSquare size={30} className="icon" />
         </div>
       </div>
-
-      {/* Right Section */}
+      {/* Right Section */} {/* need to improve */}
       {/* <div className="lg:col-span-2 flex flex-wrap justify-around  mt-6">
         <div className="w-full sm:w-[45%] md:w-auto">
           <h6 className="font-medium text-gray-700">Solutions</h6>

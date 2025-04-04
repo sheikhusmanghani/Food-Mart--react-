@@ -152,7 +152,7 @@ const Signup = () => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full mainColor py-2 rounded-md hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+        className="w-full mainColor py-2 font-semibold rounded-md hover:opacity-90 transition-all duration-300 transform hover:scale-105"
       >
         Sign Up
       </button>
@@ -160,10 +160,10 @@ const Signup = () => {
       {/* Google Sign-In */}
       <div>
         <span
-          className="w-full flex justify-center bg-gray-200 rounded-md py-2 text-gray-600 hover:scale-105 transition-all cursor-pointer"
+          className="w-full flex justify-center items-center  text-sm sm:text-md bg-gray-200 rounded-md py-2 text-gray-600 hover:scale-105 transition-all cursor-pointer"
           onClick={signInWithGoogle}
         >
-          <FcGoogle className="text-2xl mr-3" />
+          <FcGoogle className="text-xl sm:text-2xl mr-2 sm:mr-3" />
           Continue With Google
         </span>
       </div>
@@ -171,10 +171,10 @@ const Signup = () => {
       {/* Facebook Sign-In */}
       <div>
         <span
-          className="w-full flex justify-center bg-gray-200 rounded-md py-2 text-gray-600 hover:scale-105 transition-all cursor-pointer"
+          className="w-full flex justify-center items-center text-sm sm:text-md bg-gray-200 rounded-md py-2 text-gray-600 hover:scale-105 transition-all cursor-pointer"
           onClick={signInWithFacebook}
         >
-          <BsFacebook className="text-2xl mr-3 text-blue-800" />
+          <BsFacebook className="text-xl sm:text-2xl mr-2 sm:mr-3 text-blue-800" />
           Continue With Facebook
         </span>
       </div>
@@ -182,10 +182,10 @@ const Signup = () => {
       {/* Github Sign-In */}
       <div>
         <span
-          className="w-full flex justify-center bg-gray-200 rounded-md py-2 text-gray-600 hover:scale-105 transition-all cursor-pointer"
+          className="w-full flex justify-center items-center text-sm sm:text-md bg-gray-200 rounded-md py-2 text-gray-600 hover:scale-105 transition-all cursor-pointer"
           onClick={signInWithGithub}
         >
-          <VscGithubInverted className="text-2xl mr-3 text-black" />
+          <VscGithubInverted className="text-xl sm:text-2xl mr-2 sm:mr-3 text-black" />
           Continue With Github
         </span>
       </div>

@@ -12,19 +12,19 @@ const Home = () => {
   return (
     <div className="bg-gray-100 mt-[65px]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-800 via-green-500 to-green-700  text-white py-16">
+      <section className="bg-gradient-to-r from-green-800 via-green-500 to-green-700  text-white py-8 sm:py-16">
         <div className="container mx-auto px-4 text-center text-wrap">
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold uppercase">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold uppercase">
             Fresh Fruits, Veggies & Essentials
           </h1>
 
-          <p className="mt-4 mb-10 text-lg sm:text-xl">
+          <p className="mt-4 mb-10 text-md sm:text-xl md:font-semibold">
             Delivering fresh and organic products straight to your door.
           </p>
 
           <NavLink
             to={"/shop"}
-            className="  px-6 py-3 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-green-800 hover:text-white transition duration-[400ms]"
+            className="px-6 py-3 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-green-800 hover:text-white transition duration-[400ms]"
           >
             Shop Now
           </NavLink>
@@ -35,7 +35,7 @@ const Home = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-gray-700 mb-10">
-            Shop by Category
+            Shop By Category
           </h2>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -54,7 +54,7 @@ const Home = () => {
                   Delicious and organic fruits sourced from local farms.
                 </p>
                 <NavLink to={"/shop"}>
-                  <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600">
+                  <button className="mt-4 px-4 py-2 bg-green-500 font-semibold text-white rounded-lg shadow hover:bg-green-600">
                     Shop Fruits
                   </button>
                 </NavLink>
@@ -76,7 +76,7 @@ const Home = () => {
                   Organic and handpicked vegetables for your healthy meals.
                 </p>
                 <NavLink to={"/shop/veggies"}>
-                  <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600">
+                  <button className="mt-4 px-4 py-2 bg-green-500 font-semibold text-white rounded-lg shadow hover:bg-green-600">
                     Shop Vegetables
                   </button>
                 </NavLink>
@@ -98,7 +98,7 @@ const Home = () => {
                   Shop essential items for your daily household needs.
                 </p>
                 <NavLink to={"/shop/essentials"}>
-                  <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600">
+                  <button className="mt-4 px-4 py-2 bg-green-500 font-semibold text-white rounded-lg shadow hover:bg-green-600">
                     Shop Essentials
                   </button>
                 </NavLink>

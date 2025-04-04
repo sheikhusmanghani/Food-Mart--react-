@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import "./is-ki.css";
+import "./LocalStyling.css";
 import "../index.css";
 import Sidebar from "./components/Sidebar";
 import { useContext } from "react";

@@ -7,13 +7,14 @@ import { toast } from "react-toastify";
 const Login = () => {
   //
   const navigate = useNavigate(); // for navigation
+
   // form data
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
 
-  const login = async (e) => {
+  const loginForm = async (e) => {
     e.preventDefault();
     try {
       const user = await signInWithEmailAndPassword(
@@ -38,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <form className="space-y-4" onSubmit={login}>
+    <form className="space-y-4" onSubmit={loginForm}>
       <div className="relative">
         <input
           type="email"

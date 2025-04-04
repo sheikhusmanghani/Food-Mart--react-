@@ -63,7 +63,7 @@ const ModalBox = ({ isOpen, setIsOpen, ques }) => {
 
                   closeModal(); // Close modal after logout
 
-                  toast.success("User signed in successfully !");
+                  toast.success("User signed out successfully !");
 
                   contextData.setIsLoggedIn(false);
                 }}

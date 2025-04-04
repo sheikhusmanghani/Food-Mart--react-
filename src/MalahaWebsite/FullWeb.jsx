@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import "./is-ki.css";
+import "./LocalStyling.css";
 import Header from "./Navbar";
 import Footer from "./Footer";
 
