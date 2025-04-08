@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import "./LocalStyling.css";
-import Header from "./Navbar";
-import Footer from "./Footer";
+import Header from "./Components/Navbar";
+import Footer from "./Components/Footer";
 
 const FullWeb = () => {
   return (

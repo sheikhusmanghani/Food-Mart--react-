@@ -15,8 +15,8 @@ import { HiMenu } from "react-icons/hi";
 import { CgMenu } from "react-icons/cg";
 import { LiaUnlockAltSolid } from "react-icons/lia";
 import { FirebaseContext } from "../Firebase/FirebaseContext";
-import { ModalBox } from "../common Components/LogoutPopup";
-import UserChecker from "../common Components/UserChecker";
+import { ModalBox } from "./LogoutPopup";
+import UserChecker from "./UserChecker";
 
 export default function Sidebar() {
   //

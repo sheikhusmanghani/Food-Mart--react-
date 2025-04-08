@@ -6,7 +6,7 @@ const NotFound = () => {
 
   return (
     <div className="flex flex-col items-center pt-10">
-      <img src={error} alt="" />
+      <img src={error} alt="Page Not Found" />
       {/* <h1 className="text-center text-3xl font-semibold text-red-500 m-12">
         Sorry - Page Not Found
       </h1> */}

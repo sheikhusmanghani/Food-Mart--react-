@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import { auth, db } from "./FirebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 
@@ -8,32 +8,40 @@ export const FirebaseContext = createContext(null);
 export const FirebaseProvider = ({ children }) => {
   // for checking login
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUserDetails, setCurrentUserDetails] = useState({});
+  const [currentUserDetails, setCurrentUserDetails] = useState(null);
 
-  async function getCurrentUserDetails(uid) {
+  const getCurrentUserDetails = useCallback(async (uid) => {
     const docRef = doc(db, "users", uid);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      // console.log("Document data:", docSnap.data()); // ok
       setCurrentUserDetails(docSnap.data());
     } else {
-      console.log("No such document!"); // docsnap undefined hoga yaha
+      console.log("No such document!");
     }
-  }
+  }, []);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         console.log("auth--> ", "Login hy");
         setIsLoggedIn(true);
-        getCurrentUserDetails(user.uid); // function uppar bana hua hy
+
+        // Only fetch if new user detected
+        if (!currentUserDetails || currentUserDetails.uid !== user.uid) {
+          getCurrentUserDetails(user.uid);
+        }
       } else {
         setIsLoggedIn(false);
+        setCurrentUserDetails(null);
         console.log("auth--> ", "Logout hy");
       }
     });
-  }, [isLoggedIn]);
+
+    return () => unsubscribe();
+  }, []);
+
+  // console.log("currentUserDetails", currentUserDetails); // ok
 
   return (
     <FirebaseContext.Provider
@@ -41,6 +49,7 @@ export const FirebaseProvider = ({ children }) => {
         isLoggedIn,
         setIsLoggedIn,
         currentUserDetails,
+        getCurrentUserDetails,
       }}
     >
       {children}

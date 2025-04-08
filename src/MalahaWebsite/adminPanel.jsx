@@ -11,11 +11,7 @@ const AdminPanel = () => {
   const { isLoggedIn } = useContext(FirebaseContext);
   const [fileName, setFileName] = useState("Upload Image");
   const [isLoading, setIsLoading] = useState(false);
-
-  // Redirect if user is not logged in
-  if (isLoggedIn === false) {
-    return <Navigate to="/form" />;
-  }
+ 
 
   const handleFile = async (file) => {
     const data = new FormData();
