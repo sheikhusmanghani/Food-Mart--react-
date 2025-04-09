@@ -9,14 +9,14 @@ const UserChecker = () => {
   // let itemsCount = cartitems.length;
   // let username = currentUserDetails.username?.[0] || "...";
 
-  return isLoggedIn ? (
+  return (
     <div className="relative">
       <p className="bg-[#17a84c] text-white uppercase font-bold text-xl rounded-full py-1 ml-1 px-2 ">
-        {/* {username} */}
+        s {/* {username} */}
       </p>
       {/* <span className="cart-badge bg-[#17a84c] px-1">{itemsCount}</span> */}
     </div>
-  ) : null;
+  );
 };
 
 export default UserChecker;

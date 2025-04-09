@@ -1,19 +1,16 @@
 import { useContext, useState } from "react";
 import { FirebaseContext } from "./Firebase/FirebaseContext";
-import { Navigate } from "react-router-dom";
-// import { ModalBox } from "./common Components/ProductAddPopup";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "./Firebase/FirebaseConfig";
 import { toast } from "react-toastify";
 import { FaCloudUploadAlt } from "react-icons/fa";
 
 const AdminPanel = () => {
-  const { isLoggedIn } = useContext(FirebaseContext);
+  // const { isLoggedIn } = useContext(FirebaseContext);
   const [fileName, setFileName] = useState("Upload Image");
   const [isLoading, setIsLoading] = useState(false);
- 
 
-  const handleFile = async (file) => {
+  const sendFileToCloud = async (file) => {
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", "first-cloudinary-app");
@@ -26,37 +23,45 @@ const AdminPanel = () => {
         body: data,
       }
     );
-    const uploadedImageUrl = await res.json();
-    return uploadedImageUrl.url;
+
+    const uploadedImage = await res.json();
+
+    return uploadedImage.url;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-
-    const formData = new FormData(e.target);
-    const file = formData.get("image");
-
     try {
-      const imageUrl = await handleFile(file);
+      const fileTypes = ["image/png", "image/png", "image/jpeg"];
+      const formData = new FormData(e.target);
+      const file = formData.get("image");
 
-      const formValues = {
-        _id: Date.now().toString().slice(0, 10),
-        name: formData.get("name"),
-        price: formData.get("price"),
-        quantity: formData.get("quantity"),
-        unit: formData.get("unit"),
-        category: formData.get("category"),
-        image: imageUrl,
-      };
+      if (fileTypes.includes(file.type)) {
+        setIsLoading(true); // when the submitting starts
 
-      // send `formValues` to firebase
-      const docRef = await addDoc(collection(db, "products"), formValues);
+        const imageUrl = await sendFileToCloud(file);
 
-      setIsLoading(false);
-      toast.success("This product has been saved.");
-      e.target.reset();
-      setFileName("Upload Image");
+        const formValues = {
+          _id: Date.now().toString().slice(0, 10),
+          name: formData.get("name"),
+          price: formData.get("price"),
+          quantity: formData.get("quantity"),
+          unit: formData.get("unit"),
+          category: formData.get("category"),
+          image: imageUrl,
+        };
+
+        // send `formValues` to firebase
+        await addDoc(collection(db, "products"), formValues);
+
+        setIsLoading(false);
+        toast.success("This product has been saved.");
+        e.target.reset();
+        setFileName("Upload Image");
+        //
+      } else {
+        toast.error("File type must be png/jpeg/jpg"); // if filetype not as defined
+      }
     } catch (error) {
       console.error("Error uploading image:", error);
     }
@@ -147,7 +152,6 @@ const AdminPanel = () => {
             id="image"
             name="image"
             required
-            // className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
             onChange={(e) => {
               setFileName(e.target.files[0].name);
             }}
