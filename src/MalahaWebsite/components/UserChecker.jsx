@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { FirebaseContext } from "../Firebase/FirebaseContext";
+import { FaUserCircle } from "react-icons/fa";
 
 const UserChecker = () => {
   const { isLoggedIn, currentUserDetails } = useContext(FirebaseContext);
@@ -10,10 +11,11 @@ const UserChecker = () => {
   // let username = currentUserDetails.username?.[0] || "...";
 
   return (
-    <div className="relative">
-      <p className="bg-[#17a84c] text-white uppercase font-bold text-xl rounded-full py-1 ml-1 px-2 ">
-        s {/* {username} */}
-      </p>
+    <div className="">
+      {/* <p className="w-10 h-10 mr-2 flex justify-center items-center border-2 border-green-500 mainColor text-white uppercase font-bold text-xl rounded-full"> */}
+        {/* s {username} */}
+        <FaUserCircle  className="w-8 h-8 mr-2 text-green-600"/>
+      {/* </p> */}
       {/* <span className="cart-badge bg-[#17a84c] px-1">{itemsCount}</span> */}
     </div>
   );

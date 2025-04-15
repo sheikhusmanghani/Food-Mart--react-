@@ -4,49 +4,30 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "./Firebase/FirebaseConfig";
 import { toast } from "react-toastify";
 import { FaCloudUploadAlt } from "react-icons/fa";
+import { isValidFileType, sendFileToCloud } from "./Components/HelperFunctions";
 
 const AdminPanel = () => {
   // const { isLoggedIn } = useContext(FirebaseContext);
   const [fileName, setFileName] = useState("Upload Image");
   const [isLoading, setIsLoading] = useState(false);
 
-  const sendFileToCloud = async (file) => {
-    const data = new FormData();
-    data.append("file", file);
-    data.append("upload_preset", "first-cloudinary-app");
-    data.append("cloud_name", "dp2y4fbqv");
-
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dp2y4fbqv/image/upload",
-      {
-        method: "POST",
-        body: data,
-      }
-    );
-
-    const uploadedImage = await res.json();
-
-    return uploadedImage.url;
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const fileTypes = ["image/png", "image/png", "image/jpeg"];
+      // first file checking and then submitting
       const formData = new FormData(e.target);
       const file = formData.get("image");
 
-      if (fileTypes.includes(file.type)) {
+      if (isValidFileType(file)) {
         setIsLoading(true); // when the submitting starts
 
-        const imageUrl = await sendFileToCloud(file);
+        const imageUrl = await sendFileToCloud(file); // uploading image to cloudinary
 
         const formValues = {
-          _id: Date.now().toString().slice(0, 10),
+          _id: Date.now().toString().slice(0, 10), // creating random id's
           name: formData.get("name"),
           price: formData.get("price"),
-          quantity: formData.get("quantity"),
-          unit: formData.get("unit"),
+          weight: formData.get("weight"),
           category: formData.get("category"),
           image: imageUrl,
         };
@@ -60,7 +41,7 @@ const AdminPanel = () => {
         setFileName("Upload Image");
         //
       } else {
-        toast.error("File type must be png/jpeg/jpg"); // if filetype not as defined
+        toast.error(`File type must be png / jpeg / jpg`); // if filetype not as defined
       }
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -93,7 +74,7 @@ const AdminPanel = () => {
             Price :
           </label>
           <input
-            type="text"
+            type="number"
             id="price"
             name="price"
             placeholder="1000, 2000, 3000..."
@@ -101,26 +82,16 @@ const AdminPanel = () => {
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
           />
 
-          <label htmlFor="quantity" className="mt-3">
-            Quantity :
-          </label>
-          <input
-            type="number"
-            id="quantity"
-            name="quantity"
-            placeholder="1 , 6 , 12..."
-            required
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
-          />
-
-          <label htmlFor="unit" className="mt-3">
-            Unit :
+          <label htmlFor="weight" className="mt-3">
+            Weight :
           </label>
           <input
             type="text"
-            id="unit"
-            name="unit"
-            placeholder="Kg, Dozen, Pieces..."
+            id="weight"
+            name="weight"
+            placeholder="1 Kg , 6 Pieces , Dozen..."
+            minLength="1"
+            maxLength="12"
             required
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 text-black"
           />
@@ -153,7 +124,11 @@ const AdminPanel = () => {
             name="image"
             required
             onChange={(e) => {
-              setFileName(e.target.files[0].name);
+              if (isValidFileType(e.target.files[0])) {
+                setFileName(e.target.files[0].name);
+              } else {
+                toast.error(`File type must be png / jpeg / jpg`); // if filetype not as defined
+              }
             }}
             className="hidden"
           />

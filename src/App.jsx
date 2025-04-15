@@ -13,6 +13,7 @@ import BothForms from "./MalahaWebsite/LoginSignupForm/bothForms";
 import { useContext } from "react";
 import CartsPage from "./MalahaWebsite/CartsPage";
 import ShopProducts from "./MalahaWebsite/ShopProducts";
+import AdminProducts from "./MalahaWebsite/AdminProducts";
 // import Contact from "./MalahaWebsite/Contact";
 
 const App = () => {
@@ -69,6 +70,10 @@ const App = () => {
         {
           path: "/admin",
           element: <AdminPanel />,
+        },
+        {
+          path: "/admin-products",
+          element: <AdminProducts />,
         },
         // {
         //   path: "/support",

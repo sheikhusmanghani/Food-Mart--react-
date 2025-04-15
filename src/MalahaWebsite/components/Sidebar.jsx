@@ -43,13 +43,9 @@ export default function Sidebar() {
 
         <button
           onClick={toggleSidebar}
-          className="text-gray-500 text-3xl focus:outline-none"
+          className="text-gray-500 focus:outline-none"
         >
-          {isOpen ? (
-            <CgMenu className="h-6 w-8 text-3xl" />
-          ) : (
-            <HiMenu className="h-6 w-6 text-gray-600" />
-          )}
+          <HiMenu className="text-green-700 text-3xl" />
         </button>
       </div>
 

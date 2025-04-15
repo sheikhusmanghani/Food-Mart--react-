@@ -8,7 +8,7 @@ import { FaSquareInstagram } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <div className=" mx-auto py-5 px-1 grid gap-8 text-gray-600 bg-slate-100 min-h-[170px] border  border-gray-300    ">
+    <div className=" mx-auto py-5 px-1 grid gap-8 text-gray-600 bg-gray-100 min-h-[170px] border  border-gray-300    ">
       {/* Left Section    & Right Section is'nt ready  */}
       <div className="lg:col-span-1">
         <h1 className="w-full text-3xl text-center font-bold text-gray-700  ">
