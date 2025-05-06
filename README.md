@@ -1,7 +1,7 @@
 #NEW WORKING !!! (4 april 25) 
 
 WORKING 📝:
-               -- ASDBS --
+               -- validations of adminpanel inputs --
 
 MISSIONS : 
                     1.   carting method zero to 100% ,

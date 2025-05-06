@@ -10,9 +10,9 @@ import { NavLink } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="bg-gray-100 mt-[65px]">
+    <div className="bg-gray-100 mt-[60px]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-800 via-green-500 to-green-700  text-white py-8 sm:py-16">
+      <section className="bg-gradient-to-r from-green-800 via-green-500 to-green-700  text-white py-8 sm:py-16  drop-shadow-md">
         <div className="container mx-auto px-4 text-center text-wrap">
           <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold uppercase">
             Fresh Fruits, Veggies & Essentials

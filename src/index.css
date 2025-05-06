@@ -21,6 +21,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #074900;
 }
+
 /* ------- */
 * {
   margin: 0;
@@ -30,12 +31,6 @@
 }
 
 .active {
-  /* color: rgb(17, 24, 39); */
   border-top: 4px solid black;
-}
-
-/* bold for shop Pages  */
-section .shopPages a.active {
   font-weight: bold;
-  border: none;
 }

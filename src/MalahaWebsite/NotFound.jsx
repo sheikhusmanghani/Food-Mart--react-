@@ -11,7 +11,7 @@ const NotFound = () => {
         Sorry - Page Not Found
       </h1> */}
       <button
-        onClick={() => navigate("/home")}
+        onClick={() => navigate("/")}
         className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full "
       >
         Back To Home

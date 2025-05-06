@@ -1,3 +1,6 @@
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../Firebase/FirebaseConfig";
+
 // isValidFileType
 export const isValidFileType = (file) => {
   const fileTypes = ["image/png", "image/jpeg", "image/jpg"];
@@ -23,4 +26,22 @@ export const sendFileToCloud = async (file) => {
   const uploadedImage = await res.json();
 
   return uploadedImage.url;
+};
+
+// getDataFromFirebase
+
+export const getData = async (category) => {
+  try {
+    const q = query(
+      collection(db, "products"),
+      where("category", "==", category)
+    );
+
+    const querySnapshot = await getDocs(q);
+    const data = querySnapshot.docs.map((doc) => doc.data());
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 };

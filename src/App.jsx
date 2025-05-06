@@ -1,23 +1,19 @@
 import "./index.css";
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import FullWeb from "./MalahaWebsite/FullWeb";
 import Home from "./MalahaWebsite/Home";
 import NotFound from "./MalahaWebsite/NotFound";
-import { FirebaseContext } from "./MalahaWebsite/Firebase/FirebaseContext";
 import AdminPanel from "./MalahaWebsite/adminPanel";
 import BothForms from "./MalahaWebsite/LoginSignupForm/bothForms";
-import { useContext } from "react";
 import CartsPage from "./MalahaWebsite/CartsPage";
 import ShopProducts from "./MalahaWebsite/ShopProducts";
 import AdminProducts from "./MalahaWebsite/AdminProducts";
-// import Contact from "./MalahaWebsite/Contact";
+import FruitsPage from "./MalahaWebsite/FruitsPage";
+import VeggiesPage from "./MalahaWebsite/VeggiesPage";
+import EssentialsPage from "./MalahaWebsite/EssentialsPage";
 
 const App = () => {
-  const { isLoggedIn } = useContext(FirebaseContext); // ok
+  // const { isLoggedIn } = useContext(FirebaseContext); // ok
 
   const router = createBrowserRouter([
     {
@@ -30,42 +26,30 @@ const App = () => {
           element: <Home />,
         },
         {
-          path: "/home",
-          element: <Home />,
-        },
-        {
           path: "/shop",
           element: <ShopProducts />,
-          // children: [
-          //   {
-          //     index: true,
-          //     element: <ShopTwo />,
-          //   },
-          //   {
-          //     path: "fruits",
-          //     element: <Fruits />,
-          //   },
-          //   {
-          //     path: "veggies",
-          //     element: <Veggies />,
-          //   },
-          //   {
-          //     path: "essentials",
-          //     element: <Essentials />,
-          //   },
-          // ],
+          children: [
+            {
+              index: true,
+              element: <FruitsPage />,
+            },
+            {
+              path: "veggies",
+              element: <VeggiesPage />,
+            }, 
+            {
+              path: "essentials",
+              element: <EssentialsPage />,
+            }, 
+          ],
         },
-        // {
-        //   path: "/contact",
-        //   element: <Contact />,
-        // },
         {
           path: "/form",
           element: <BothForms />,
         },
         {
           path: "/carts",
-          element: isLoggedIn ? <CartsPage /> : <Navigate to={"/form"} />,
+          element: <CartsPage />,
         },
         {
           path: "/admin",
@@ -75,13 +59,10 @@ const App = () => {
           path: "/admin-products",
           element: <AdminProducts />,
         },
-        // {
-        //   path: "/support",
-        //   element: <DataDeletation />,
-        // },
       ],
     },
   ]);
+
   return <RouterProvider router={router} />;
 };
 

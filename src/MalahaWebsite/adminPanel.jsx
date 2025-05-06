@@ -50,7 +50,7 @@ const AdminPanel = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center mt-20 mb-4 w-screen">
+      <div className="flex justify-center items-center mt-20 mb-4">
         <form
           className="flex flex-col min-w-56 md:w-1/3 p-5 mainColor rounded-lg"
           onSubmit={handleSubmit}
@@ -58,7 +58,7 @@ const AdminPanel = () => {
           <h1 className="text-2xl font-bold py-1 uppercase text-center ">
             Add Your Product
           </h1>
-          {/* <hr className="mb-4" /> */}
+          <hr className="mb-1 w-[50%] mx-auto" />
 
           <label htmlFor="productName"> Name : </label>
           <input
@@ -102,12 +102,15 @@ const AdminPanel = () => {
           <select
             id="category"
             required
+            defaultValue=""
             name="category"
             className="text-gray-600 mt-0.5 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 "
           >
-            <option disabled>-- Select any Catogory --</option>
+            <option value="" disabled>
+              -- Select any Catogory --
+            </option>
             <option value="fruits">Fruits</option>
-            <option value="Veggies">Veggies</option>
+            <option value="veggies">Veggies</option>
             <option value="essentials">Esentials</option>
           </select>
 
